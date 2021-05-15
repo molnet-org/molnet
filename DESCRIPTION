@@ -1,0 +1,37 @@
+Package: molnet
+Type: Package
+Title: Analysis pipeline for differential drug response prediction on molecular networks of stratified patient groups
+Version: 0.1.0
+Author: Katharina Baum (ORCID 0000-0001-7256-0566), Julian Hugo (ORCID 0000-0003-3355-1071), Spoorthi Kashyap, Nataniel Müller (ORCID 0000-0002-0275-3992), Justus Zeinert
+Maintainer: Katharina Baum <katharina.baum@hpi.de>
+Description: Analyze molecular data from stratified patient groups to predict a
+    difference in drug response. Generate molecular networks for single molecule 
+    types (e.g. proteins, mrna, metabolites, phosphoproteins) from raw data and 
+    reduce them with significance testing or correlation thresholding.
+    Combine these networks in individually different ways to an integrated
+    molecular network.
+    In a final analysis step, compute an interaction score for edges adjacent to
+    drug targets in the combined network using a Python algorithm and derive a
+    final differential drug response score between the stratified groups for any 
+    list of drugs.
+License: MIT (software only, excluding data, see file LICENSE)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+VignetteBuilder: knitr
+Imports: 
+    igraph,
+    dplyr,
+    stringr,
+    WGCNA,
+    knitr,
+    Rfast,
+    readr,
+    ggplot2,
+    pROC,
+    tibble,
+    tidyr
+Suggests: 
+    rmarkdown
+Depends: 
+    R (>= 2.10)

@@ -10,6 +10,7 @@ target_edge_list <- function(graph, target_nodes, group) {
   #' @export
   #'
   #' @return An edge list as a data frame.
+  #' @importFrom rlang .data
 
   # filter for nodes contained in combined graph
   target_node_ids <- target_nodes[target_nodes[ , group], "node_id"]
@@ -37,6 +38,7 @@ find_targets <- function(graphs, target_molecules, interaction_table, annotation
   #' @export
   #'
   #' @return A named list. Element `target_nodes` is a data frame with column `node_id` (unique node IDs in the iGraph graph object that are targeted by drugs) and columns `group1` and `group2` (boolean values specifying whether the node is contained in the combined graph of the group). Element `drugs_to_target_nodes` contains a named list: elements are `drug_names` and contain a vector of node IDs that are their specific targets.
+  #' @importFrom rlang .data
 
   # filter annotation for components that appear in the interaction table
   target_annotation <-  annotation %>%

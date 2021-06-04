@@ -516,7 +516,7 @@ get_drug_response_score <- function(differential_graph, drug_targets, interactio
   #' data(drug_targets_example)
   #' data(differential_score_graph_example)
   #' drug_response_score <- get_drug_response_score(differential_score_graph_example, drug_targets_example[["targets"]], drug_target_interaction$interaction_table)
-  #'
+  #' @importFrom rlang .data
 
   # vector of target node ids
   target_nodes <- drug_targets$target_nodes

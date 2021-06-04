@@ -65,7 +65,8 @@ Imports:
     readr,
     tibble,
     tidyr,
-    magrittr
+    magrittr,
+    rlang
 Suggests: 
     rmarkdown,
     knitr

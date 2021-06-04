@@ -27,5 +27,4 @@ drug_target_interaction <- make_drug_target(target_molecules='protein', interact
 data(drug_targets_example)
 data(differential_score_graph_example)
 drug_response_score <- get_drug_response_score(differential_score_graph_example, drug_targets_example[["targets"]], drug_target_interaction$interaction_table)
-
 }

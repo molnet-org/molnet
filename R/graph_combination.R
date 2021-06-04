@@ -8,6 +8,7 @@ inter_layer_edgelist_by_id <- function(annotation_1, annotation_2, connection, w
   #' @param weight Integer or vector specifying the weight of the inter-layer connections.
   #' @export
   #' @return data.frame with columns from, to and weight
+  #' @importFrom rlang .data
 
   inter_graph <- annotation_1 %>%
     dplyr::inner_join(annotation_2, by = connection) %>%
@@ -28,6 +29,7 @@ inter_layer_edgelist_by_table <- function(annotation_1, annotation_2, interactio
   #' @param weight_column Name of the column in 'interaction_table' giving the weight of the inter-layer edges.
   #' @export
   #' @return data.frame with columns from, to and weight
+  #' @importFrom rlang .data
 
   id.x <- intersect(colnames(annotation_1), colnames(interaction_table))[1]
   id.y <- intersect(colnames(annotation_2), colnames(interaction_table))[1]

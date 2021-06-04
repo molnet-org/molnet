@@ -274,7 +274,6 @@
 #'   \item{drug_name}{Drug-names with known interactions.}
 #'   \item{drug_chembl_id}{ChEMBL ID of drugs.}
 #'   }
-#'
 #'  \item{match_on}{Column name of the data frame supplied in `interaction_table` that is used for matching drugs and target nodes in the graph (e.g. `ncbi_id`).}
 #' }
 #' @source Terunuma, Atsushi et al. “MYC-driven accumulation of 2-hydroxyglutarate is associated with breast cancer prognosis.” The Journal of clinical investigation vol. 124,1 (2014): 398-412. doi:10.1172/JCI71180

@@ -293,7 +293,7 @@ python script is parallelized using Ray. Use the setting `int_score_mode` for se
 Refer to the Ray documentation
 if you encounter problems with running the python script in parallel.
 
-```{r Calculate interaction score}
+```{r Calculate interaction score, eval=FALSE}
 interaction_score_graphs <- interaction_score(combined_graphs[["graphs"]], drug_target_edgelists=drug_targets[["edgelist"]], settings=settings)
 ```
 

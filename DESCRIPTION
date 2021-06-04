@@ -48,8 +48,9 @@ Description: Networks provide a means to incorporate molecular interactions into
     Our proposed pipeline leverages multi-omics data for differential predictions,
     e.g. on drug response, and includes prior information on interactions.
     The case study presented in the vignette uses data published by
-    Krug (2020) <doi:10.1016/j.cell.2020.10.036>.
-License: MIT (software only, excluding data, see file LICENSE)
+    Krug (2020) <doi:10.1016/j.cell.2020.10.036>. The package license applies only
+    to the software and explicitly not to the included data.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 LazyDataCompression: xz
@@ -64,7 +65,8 @@ Imports:
     readr,
     tibble,
     knitr,
-    tidyr
+    tidyr,
+    magrittr
 Suggests: 
     rmarkdown
 Depends: 

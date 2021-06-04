@@ -92,6 +92,11 @@ install_python_dependencies <- function(package_manager="pip3") {
 }
 
 get_layer <- function(name, layers) {
+  #' [INTERNAL] Fetch layer by name from layer object
+  #'
+  #' @param name The layer to fetch
+  #' @param layers a layers object \code{\link{layers_example}}
+  #'
   #' @export
   layer_names <- sapply(layers, function(l) l[['name']])
   return(layers[[which(layer_names == name)]])

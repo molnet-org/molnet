@@ -266,7 +266,7 @@
 #' @format A named list with 3 items.
 #' \describe{
 #'   \item{target_molecules}{Name of layer containing the drug targets. This name has to match the corresponding named item in the list of layers supplied to \code{\link{start_pipeline}}.}
-#'   \item{interaction_table}
+#'   \item{interaction_table}{Table giving drug-gene-interactions.}
 #'   \describe{
 #'   \item{gene_name}{Gene names of targeted protein-coding genes.}
 #'   \item{ncbi_id}{NCBI IDs of targeted protein-coding genes.}

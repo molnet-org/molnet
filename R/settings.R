@@ -71,6 +71,14 @@ molnet_settings <- function(
 }
 
 get_layer_setting <- function(layer, settings, setting_name) {
+  #' Get layer settings
+  #'
+  #' Returns specified setting for a specific network layer.
+  #'
+  #' @param layer A network layer created by \code{\link{make_layer}}
+  #' @param settings Named list of settings created by \code{\link{molnet_settings}}
+  #' @param setting_name String indicating the setting to return.
+  #' @return Setting value(s) for this layer
   #' @export
   if (!is.list(settings[[setting_name]])) {
     return(settings[[setting_name]])

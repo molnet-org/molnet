@@ -548,8 +548,8 @@ get_drug_response_score <- function(differential_graph, drug_targets, interactio
   drug_response_score <- data.frame(drug_name = names(drug_response_per_drug),
                                     drug_response_score = unname(unlist(drug_response_per_drug)))  %>%
     dplyr::right_join(all_drug_names) %>%
-    dplyr::select(drug_name, drug_response_score) %>%
-    dplyr::arrange(drug_name)
+    dplyr::select(.data$drug_name, .data$drug_response_score) %>%
+    dplyr::arrange(.data$drug_name)
 
 
   return(drug_response_score)

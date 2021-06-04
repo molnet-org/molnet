@@ -63,6 +63,7 @@ Imports:
     Rfast,
     readr,
     tibble,
+    knitr,
     tidyr
 Suggests: 
     rmarkdown

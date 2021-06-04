@@ -284,7 +284,7 @@ These are loaded and returned in a named list.
 
 
 ATTENTION: Data exchange via files is mandatory and takes long for large data. Interaction
-score computation is expensive and slow because it involves finding all
+score computation is slow because it involves finding all
 simple paths up to a certain length between source and target node of the
 drug target edges. Don't set `max_path_length` in settings to a large value and only consider
 this step if your graphs have up to approximately 2 million edges.
@@ -293,7 +293,7 @@ python script is parallelized using Ray. Use the setting `int_score_mode` for se
 Refer to the Ray documentation
 if you encounter problems with running the python script in parallel.
 
-```{r Calculate interaction score, eval=FALSE}
+```{r Calculate interaction score, eval = FALSE}
 interaction_score_graphs <- interaction_score(combined_graphs[["graphs"]], drug_target_edgelists=drug_targets[["edgelist"]], settings=settings)
 ```
 
@@ -305,7 +305,8 @@ the two groups is computed. A single differential graph with the `differential_s
 attribute is returned.
 
 ```{r Calculate differential score}
-differential_score_graph <- differential_score(interaction_score_graphs)
+data("interaction_score_graphs_vignette")
+differential_score_graph <- differential_score(interaction_score_graphs_vignette)
 ```
 
 ### Step 6: Calculate drug response score

@@ -16,7 +16,7 @@ target_edge_list <- function(graph, target_nodes, group) {
 
   edge_list <- graph %>%
     igraph::as_data_frame('edges') %>%
-    dplyr::filter(from %in% target_node_ids | to %in% target_node_ids)
+    dplyr::filter(.data$from %in% target_node_ids | .data$to %in% target_node_ids)
 
   return(edge_list)
 }

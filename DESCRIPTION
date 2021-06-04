@@ -60,11 +60,8 @@ Imports:
     dplyr,
     stringr,
     WGCNA,
-    knitr,
     Rfast,
     readr,
-    ggplot2,
-    pROC,
     tibble,
     tidyr
 Suggests: 

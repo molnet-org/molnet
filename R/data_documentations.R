@@ -260,3 +260,26 @@
 #' @source MetaboAnalyst: \url{https://www.metaboanalyst.ca/faces/upload/ConvertView.xhtml}
 #'
 "metabolite_data"
+
+#' Drug target interaction example data
+#'
+#' @format A named list with 3 items.
+#' \describe{
+#'   \item{target_molecules}{Name of layer containing the drug targets. This name has to match the corresponding named item in the list of layers supplied to \code{\link{start_pipeline}}.}
+#'
+#'   \item{interaction_table}
+#'   \describe{
+#'   \item{gene_name}{Gene names of targeted protein-coding genes.}
+#'   \item{ncbi_id}{NCBI IDs of targeted protein-coding genes.}
+#'   \item{drug_name}{Drug-names with known interactions.}
+#'   \item{drug_chembl_id}{ChEMBL ID of drugs.}
+#'   }
+#'
+#'  \item{match_on}{Column name of the data frame supplied in `interaction_table` that is used for matching drugs and target nodes in the graph (e.g. `ncbi_id`).}
+#' }
+#' @source Terunuma, Atsushi et al. “MYC-driven accumulation of 2-hydroxyglutarate is associated with breast cancer prognosis.” The Journal of clinical investigation vol. 124,1 (2014): 398-412. doi:10.1172/JCI71180
+#' @source \url{https://www.metabolon.com}
+#' @source Pubchem IDs: \url{https://pubchem.ncbi.nlm.nih.gov}
+#' @source MetaboAnalyst: \url{https://www.metaboanalyst.ca/faces/upload/ConvertView.xhtml}
+#'
+"drug_target_interaction_example"

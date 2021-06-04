@@ -40,7 +40,7 @@ find_targets <- function(graphs, target_molecules, interaction_table, annotation
 
   # filter annotation for components that appear in the interaction table
   target_annotation <-  annotation %>%
-    dplyr::filter(layer == target_molecules) %>% # filter annotation table for requested molecule type
+    dplyr::filter(.data$layer == target_molecules) %>% # filter annotation table for requested molecule type
     dplyr::inner_join(interaction_table, by = on) # join annotation table with interaction_table to return only matches on the specified identifier
 
   target_annotation <- target_annotation[!is.na(target_annotation$drug_name), ] # filter out rows with undefined drug_name
@@ -50,7 +50,7 @@ find_targets <- function(graphs, target_molecules, interaction_table, annotation
 
   # get unique nodes that are drug targets
   target_nodes <- target_annotation %>%
-    dplyr::select(node_id) %>%
+    dplyr::select(.data$node_id) %>%
     unique()
 
   # check whether target nodes are contained in the combined graphs of the group

@@ -11,7 +11,7 @@ inter_layer_edgelist_by_id <- function(annotation_1, annotation_2, connection, w
 
   inter_graph <- annotation_1 %>%
     dplyr::inner_join(annotation_2, by = connection) %>%
-    dplyr::select(from=node_id.x, to=node_id.y) %>%
+    dplyr::select(from=.data$node_id.x, to=.data$node_id.y) %>%
     tibble::add_column(weight = weight)
 
   return(inter_graph)
@@ -36,7 +36,7 @@ inter_layer_edgelist_by_table <- function(annotation_1, annotation_2, interactio
     dplyr::inner_join(interaction_table, by = id.x) %>%
     dplyr::inner_join(annotation_2, by = id.y) %>%
     dplyr::rename(weight = dplyr::all_of(weight_column)) %>%
-    dplyr::select(from=node_id.x, to=node_id.y, weight)
+    dplyr::select(from=.data$node_id.x, to=.data$node_id.y, .data$weight)
 
   return(inter_graph)
 }

@@ -22,6 +22,7 @@ ChEMBL IDs: \url{https://www.ebi.ac.uk/chembl}
 drug_gene_interactions
 }
 \description{
-Data frame providing interactions of drugs with genes. The data was downloaded from The Drug Gene Interaction Database.
+Data frame providing interactions of drugs with genes. The data was downloaded from The Drug Gene
+ Interaction Database.
 }
 \keyword{datasets}

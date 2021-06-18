@@ -3,7 +3,8 @@ inter_layer_edgelist_by_id <- function(annotation_1, annotation_2, connection, w
   #'
   #' (INTERNAL) Returns an edge list defining the connections between two layers of the network.
   #'
-  #' @param annotation_1,annotation_2 Data frames: Annotation tables specifying the identifiers of the nodes of a network
+  #' @param annotation_1,annotation_2 Data frames: Annotation tables specifying the identifiers of
+  #' the nodes of a network
   #' @param connection String of identifier to connect on
   #' @param weight Integer or vector specifying the weight of the inter-layer connections.
   #' @export
@@ -18,15 +19,19 @@ inter_layer_edgelist_by_id <- function(annotation_1, annotation_2, connection, w
   return(inter_graph)
 }
 
-inter_layer_edgelist_by_table <- function(annotation_1, annotation_2, interaction_table, weight_column) {
+inter_layer_edgelist_by_table <- function(annotation_1, annotation_2, interaction_table,
+                                          weight_column) {
   #' Interaction table to iGraph graph object
   #'
-  #' (INTERNAL) Returns an edge list defining the connections between two layers of the network based on an
+  #' (INTERNAL) Returns an edge list defining the connections between two layers of the network
+  #' based on an
   #' interaction table supplied by the user.
   #'
-  #' @param annotation_1,annotation_2 Data frames: Annotation tables specifying the identifiers of the nodes of a network
+  #' @param annotation_1,annotation_2 Data frames: Annotation tables specifying the identifiers of
+  #' the nodes of a network
   #' @param interaction_table Table specifying the interaction / connections between the two layers
-  #' @param weight_column Name of the column in 'interaction_table' giving the weight of the inter-layer edges.
+  #' @param weight_column Name of the column in 'interaction_table' giving the weight of the
+  #' inter-layer edges.
   #' @export
   #' @return data.frame with columns from, to and weight
   #' @importFrom rlang .data

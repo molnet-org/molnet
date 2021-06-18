@@ -7,7 +7,8 @@
 inter_layer_edgelist_by_id(annotation_1, annotation_2, connection, weight = 1)
 }
 \arguments{
-\item{annotation_1, annotation_2}{Data frames: Annotation tables specifying the identifiers of the nodes of a network}
+\item{annotation_1, annotation_2}{Data frames: Annotation tables specifying the identifiers of
+the nodes of a network}
 
 \item{connection}{String of identifier to connect on}
 

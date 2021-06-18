@@ -12,16 +12,19 @@ inter_layer_edgelist_by_table(
 )
 }
 \arguments{
-\item{annotation_1, annotation_2}{Data frames: Annotation tables specifying the identifiers of the nodes of a network}
+\item{annotation_1, annotation_2}{Data frames: Annotation tables specifying the identifiers of
+the nodes of a network}
 
 \item{interaction_table}{Table specifying the interaction / connections between the two layers}
 
-\item{weight_column}{Name of the column in 'interaction_table' giving the weight of the inter-layer edges.}
+\item{weight_column}{Name of the column in 'interaction_table' giving the weight of the
+inter-layer edges.}
 }
 \value{
 data.frame with columns from, to and weight
 }
 \description{
-(INTERNAL) Returns an edge list defining the connections between two layers of the network based on an
+(INTERNAL) Returns an edge list defining the connections between two layers of the network
+based on an
 interaction table supplied by the user.
 }

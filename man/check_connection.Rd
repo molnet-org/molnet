@@ -13,7 +13,8 @@ check_connection(connection)
 Character string vector containing error messages.
 }
 \description{
-(INTERNAL) Checks if the data given to create an inter-layer connection is valid and has the right input format
+(INTERNAL) Checks if the data given to create an inter-layer connection is valid and has the
+right input format
 }
 \examples{
 con = make_connection("mrna", "protein", connect_on="gene_name")

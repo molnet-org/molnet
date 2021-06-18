@@ -10,7 +10,8 @@ return_errors(errors)
 \item{errors}{Character string vector containing error messages.}
 }
 \description{
-Throws an error in case errors have been passed to the function. Messages describing the detected errors are printed.
+Throws an error in case errors have been passed to the function. Messages
+describing the detected errors are printed.
 }
 \examples{
 layer <- molnet::layers_example[[2]]

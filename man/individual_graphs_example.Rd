@@ -18,7 +18,8 @@ A named list with 2 items.
     }
     \item{group2}{same structure as above}
     }
-  \item{annotations}{A named list containing data frames of mappings of assigned node IDs to the user-provided component identifiers for nodes in group1 or group2 and all nodes}
+  \item{annotations}{A named list containing data frames of mappings of assigned node IDs to the
+  user-provided component identifiers for nodes in group1 or group2 and all nodes}
   \describe{
   \item{group1}{}
   \item{group2}{}
@@ -27,12 +28,19 @@ A named list with 2 items.
 }
 }
 \source{
-Krug, Karsten et al. “Proteogenomic Landscape of Breast Cancer Tumorigenesis and Targeted Therapy.” Cell vol. 183,5 (2020): 1436-1456.e31. doi:10.1016/j.cell.2020.10.036
+Krug, Karsten et al. “Proteogenomic Landscape of Breast Cancer Tumorigenesis and
+Targeted Therapy.” Cell vol. 183,5 (2020): 1436-1456.e31. doi:10.1016/j.cell.2020.10.036
 }
 \usage{
 individual_graphs_example
 }
 \description{
-Exemplary intermediate pipeline output: Individual graphs example data built by \code{\link{generate_individual_graphs}}. Graphs were created by correlation computation and reduced by the 'p_value' reduction method (default settings of \code{\link{molnet_settings}}. A subset of the original data by Krug et al., 2020 and randomly sampled metabolite data (\code{\link{layers_example}}) was used to generate graphs. They were created from data stratified by estrogen receptor (ER) status: group1 contains data of ER+ patients and group2 of ER- patients.
+Exemplary intermediate pipeline output: Individual graphs example data built by
+\code{\link{generate_individual_graphs}}. Graphs were created by correlation computation and
+reduced by the 'p_value' reduction method (default settings of \code{\link{molnet_settings}}. A
+subset of the original data by Krug et al., 2020 and randomly sampled metabolite data
+(\code{\link{layers_example}}) was used to generate graphs. They were created from data
+tratified by estrogen receptor (ER) status: group1 contains data of ER+ patients and group2 of
+ER- patients.
 }
 \keyword{datasets}

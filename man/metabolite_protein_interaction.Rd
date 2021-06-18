@@ -23,6 +23,7 @@ STRING DB: \url{https://string-db.org/}
 metabolite_protein_interaction
 }
 \description{
-Data frame providing interactions of metabolites and proteins. The data was taken from the STITCH Database.
+Data frame providing interactions of metabolites and proteins. The data was taken
+from the STITCH Database.
 }
 \keyword{datasets}

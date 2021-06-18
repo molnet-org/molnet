@@ -8,12 +8,16 @@
 An iGraph graph object.
 }
 \source{
-Krug, Karsten et al. “Proteogenomic Landscape of Breast Cancer Tumorigenesis and Targeted Therapy.” Cell vol. 183,5 (2020): 1436-1456.e31. doi:10.1016/j.cell.2020.10.036
+Krug, Karsten et al. “Proteogenomic Landscape of Breast Cancer Tumorigenesis and Targeted
+Therapy.” Cell vol. 183,5 (2020): 1436-1456.e31. doi:10.1016/j.cell.2020.10.036
 }
 \usage{
 differential_score_graph_example
 }
 \description{
-Exemplary intermediate pipeline output: Differential score graph example data built by \code{\link{differential_score}}. Contains one graph carrying the differential interaction score as weight. This was computed using a subset of the data published by Krug et al., 2020 and randomly sampled metabolite data \code{\link{layers_example}}.
+Exemplary intermediate pipeline output: Differential score graph example data built by
+\code{\link{differential_score}}. Contains one graph carrying the differential interaction score
+as weight. This was computed using a subset of the data published by Krug et al., 2020 and
+randomly sampled metabolite data \code{\link{layers_example}}.
 }
 \keyword{datasets}

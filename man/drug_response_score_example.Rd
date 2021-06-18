@@ -12,7 +12,8 @@ Data frame with two columns
 }
 }
 \source{
-Krug, Karsten et al. “Proteogenomic Landscape of Breast Cancer Tumorigenesis and Targeted Therapy.” Cell vol. 183,5 (2020): 1436-1456.e31. doi:10.1016/j.cell.2020.10.036
+Krug, Karsten et al. “Proteogenomic Landscape of Breast Cancer Tumorigenesis and Targeted
+ Therapy.” Cell vol. 183,5 (2020): 1436-1456.e31. doi:10.1016/j.cell.2020.10.036
 
 The Drug Gene Interaction Database: \url{https://www.dgidb.org/}
 }
@@ -20,9 +21,13 @@ The Drug Gene Interaction Database: \url{https://www.dgidb.org/}
 drug_response_score_example
 }
 \description{
-Exemplary final pipeline output: Drug response score data frame. This contains drugs and the calculated differential drug response score. The score was calculated by \code{\link{get_drug_response_score}}.
+Exemplary final pipeline output: Drug response score data frame. This contains drugs and the
+calculated differential drug response score. The score was calculated by
+\code{\link{get_drug_response_score}}.
 }
 \details{
-The original data used to compute this object was data published by Krug et al., 2020 and randomly sampled metabolite data \code{\link{layers_example}}.. Drug-gene interactions to calculate this output were used from The Drug Gene Interaction Database.
+The original data used to compute this object was data published by Krug et al., 2020 and
+randomly sampled metabolite data \code{\link{layers_example}}.. Drug-gene interactions to
+calculate this output were used from The Drug Gene Interaction Database.
 }
 \keyword{datasets}

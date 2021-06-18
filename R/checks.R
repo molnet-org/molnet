@@ -1,14 +1,19 @@
 check_layer <- function(layer) {
     #' Check layer input
     #'
-    #' (INTERNAL) Checks if the data used to create a network layer is valid and has the right format
+    #' (INTERNAL) Checks if the data used to create a network layer is valid and has the right
+    #' format
     #'
     #' @param layer layer to check. Created by \code{\link{make_layer}}
     #' @return Character string vector containing error messages.
     #' @export
     #' @examples
     #' data(metabolite_data)
-    #' metabolite_layer = make_layer(name="metabolite", metabolite_data$group1$data, metabolite_data$group2$data, metabolite_data$group1$identifiers, metabolite_data$group2$identifiers)
+    #' metabolite_layer = make_layer(name="metabolite",
+    #' metabolite_data$group1$data,
+    #' metabolite_data$group2$data,
+    #' metabolite_data$group1$identifiers,
+    #' metabolite_data$group2$identifiers)
     #' return_errors(check_layer(metabolite_layer))
     #'
     errors <- c()
@@ -28,7 +33,8 @@ check_layer <- function(layer) {
 check_connection <- function(connection) {
     #' Checks connection
     #'
-    #' (INTERNAL) Checks if the data given to create an inter-layer connection is valid and has the right input format
+    #' (INTERNAL) Checks if the data given to create an inter-layer connection is valid and has the
+    #' right input format
     #'
     #' @param connection Connection to check. Created by \code{\link{make_connection}}
     #' @return Character string vector containing error messages.
@@ -105,18 +111,27 @@ check_connection <- function(connection) {
 check_sensible_connections <- function(connection, layers) {
     #' Check connection and layer data
     #'
-    #' @description (INTERNAL) Checks if the connection defined in 'connection' makes sense in context of the defined layers.
+    #' @description (INTERNAL) Checks if the connection defined in 'connection' makes sense in
+    #' context of the defined layers.
     #'
     #' @param connection Connection to check. Created by \code{\link{make_connection}}
-    #' @param layers List of layers to check. Individual layers are created by \code{\link{make_layer}} and need to be wrapped in a list.
+    #' @param layers List of layers to check. Individual layers are created by
+    #' \code{\link{make_layer}} and need to be wrapped in a list.
     #'
     #' @return Character string vector containing error messages.
     #' @export
     #' @examples
     #' data(mrna_data)
-    #' mrna_layer = make_layer(name="mrna", mrna_data$group1$data, mrna_data$group2$data, mrna_data$group1$identifiers, mrna_data$group2$identifiers)
+    #' mrna_layer = make_layer(name="mrna",
+    #' mrna_data$group1$data, mrna_data$group2$data,
+    #' mrna_data$group1$identifiers,
+    #' mrna_data$group2$identifiers)
     #' data(protein_data)
-    #' protein_layer = make_layer(name="protein", protein_data$group1$data, protein_data$group2$data, protein_data$group1$identifiers, protein_data$group2$identifiers)
+    #' protein_layer = make_layer(name="protein",
+    #' protein_data$group1$data,
+    #' protein_data$group2$data,
+    #' protein_data$group1$identifiers,
+    #' protein_data$group2$identifiers)
     #' con = make_connection("mrna", "protein", connect_on="gene_name")
     #' return_errors(check_sensible_connections(con, layers=list(mrna_layer, protein_layer)))
     #'
@@ -164,14 +179,18 @@ check_sensible_connections <- function(connection, layers) {
 check_drug_target <- function(drug_target_interaction) {
     #'Check drug target interaction data
     #'
-    #' @description (INTERNAL) Checks if the data used to define interaction between drugs and targets is valid and formatted correctly.
+    #' @description (INTERNAL) Checks if the data used to define interaction between drugs and
+    #' targets is valid and formatted correctly.
     #'
-    #' @param drug_target_interaction A named list of the drug interaction data. Created by \code{\link{make_drug_target}}
+    #' @param drug_target_interaction A named list of the drug interaction data. Created by
+    #' \code{\link{make_drug_target}}
     #'
     #'@return Character string vector containing error messages.
     #'@examples
     #'data(drug_gene_interactions)
-    #'drug_target_interaction <- make_drug_target(target_molecules='protein', interaction_table=drug_gene_interactions, match_on='gene_name')
+    #'drug_target_interaction <- make_drug_target(target_molecules='protein',
+    #'interaction_table=drug_gene_interactions,
+    #'match_on='gene_name')
     #'return_errors(check_drug_target(drug_target_interaction))
     #'@export
     #'
@@ -187,9 +206,12 @@ check_drug_target <- function(drug_target_interaction) {
 check_drug_targets_in_layers <- function(drug_target_interaction, layers) {
     #'Check drug target and layer data
     #'
-    #'@description (INTERNAL) Checks if the parameters supplied in 'drug_target_interaction' makes sense in the context of the defined layers.
-    #'@param drug_target_interaction A named list of the drug interaction data. Created by \code{\link{make_drug_target}}
-    #'@param layers List of layers to check. Individual layers are created by \code{\link{make_layer}} and need to be wrapped in a list.
+    #'@description (INTERNAL) Checks if the parameters supplied in 'drug_target_interaction' makes
+    #' sense in the context of the defined layers.
+    #'@param drug_target_interaction A named list of the drug interaction data. Created by
+    #'\code{\link{make_drug_target}}
+    #'@param layers List of layers to check. Individual layers are created by
+    #' \code{\link{make_layer}} and need to be wrapped in a list.
     #'
     #'@return Character string vector containing error messages.
     #'@export
@@ -197,7 +219,9 @@ check_drug_targets_in_layers <- function(drug_target_interaction, layers) {
     #'data(layers_example)
     #'layers <- layers_example
     #'data(drug_gene_interactions)
-    #'drug_target_interaction <- make_drug_target(target_molecules='protein', interaction_table=drug_gene_interactions, match_on='gene_name')
+    #'drug_target_interaction <- make_drug_target(target_molecules='protein',
+    #'interaction_table=drug_gene_interactions,
+    #'match_on='gene_name')
     #'return_errors(check_drug_targets_in_layers(drug_target_interaction, layers))
     #'
     layer_names <- c()
@@ -226,11 +250,15 @@ check_input <- function(layers,
                         ) {
     #' Check pipeline input data for required format
     #'
-    #' @description Checks if input data is valid and formatted correctly. This function is a wrapper for other check functions to be executed as first step of the molnet pipeline.
+    #' @description Checks if input data is valid and formatted correctly. This function is a
+    #' wrapper for other check functions to be executed as first step of the molnet pipeline.
     #'
-    #' @param layers List of layers to check. Individual layers were created by \code{\link{make_layer}} and need to be wrapped in a list.
-    #' @param inter_layer_connections A list containing connections between layers. Each connection was created by \code{\link{make_connection}} and wrapped in a list.
-    #' @param drug_target_interaction A named list of the drug interaction data. Created by \code{\link{make_drug_target}}
+    #' @param layers List of layers to check. Individual layers were created by
+    #' \code{\link{make_layer}} and need to be wrapped in a list.
+    #' @param inter_layer_connections A list containing connections between layers. Each
+    #' connection was created by \code{\link{make_connection}} and wrapped in a list.
+    #' @param drug_target_interaction A named list of the drug interaction data. Created by
+    #' \code{\link{make_drug_target}}
     #'
     #' @return Character string vector containing error messages.
     #' @export
@@ -258,7 +286,8 @@ check_input <- function(layers,
 return_errors <- function(errors) {
     #' Return detected errors
     #'
-    #' @description Throws an error in case errors have been passed to the function. Messages describing the detected errors are printed.
+    #' @description Throws an error in case errors have been passed to the function. Messages
+    #' describing the detected errors are printed.
     #'
     #' @param errors Character string vector containing error messages.
     #' @export

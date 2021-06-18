@@ -7,12 +7,15 @@
 generate_individual_graphs(layers, settings)
 }
 \arguments{
-\item{layers}{Named list with different network layers containing data and identifiers for both groups (generated from \code{\link{make_layer}})}
+\item{layers}{Named list with different network layers containing data and identifiers for both
+groups (generated from \code{\link{make_layer}})}
 
 \item{settings}{A named list containing pipeline settings}
 }
 \value{
-A nested named list with first-level elements `graphs` and `annotations`. The second level elements are `group1` and `group2`. These contain a list of iGraph objects (`graphs`) and data frames (`annotations`) mapping the graph node IDs to biological identifiers.
+A nested named list with first-level elements `graphs` and `annotations`. The second
+level elements are `group1` and `group2`. These contain a list of iGraph objects (`graphs`)
+and data frames (`annotations`) mapping the graph node IDs to biological identifiers.
 }
 \description{
 Constructs and returns two graphs for each network layer, where nodes

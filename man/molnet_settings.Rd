@@ -27,41 +27,63 @@ molnet_settings(
 )
 }
 \arguments{
-\item{correlation_method}{Correlation method used for graph generation. One of (`pearson`, `spearman`, `kendall`).}
+\item{correlation_method}{Correlation method used for graph generation. One of (`pearson`,
+`spearman`, `kendall`).}
 
-\item{print_graph_info}{Boolean. Print a summary of the reduced graph to console after generation?}
+\item{print_graph_info}{Boolean. Print a summary of the reduced graph to console after
+generation?}
 
-\item{reduction_method}{Reduction method for reducing networks. One of `p_value`, '\link[WGCNA]{pickHardThreshold}' or `pickHardThreshold_alternative`. Can be a single character string if the same for all layers, else a named list mapping layer names to methods. Layers may be omitted if a method is mapped to `default`.}
+\item{reduction_method}{Reduction method for reducing networks. One of `p_value`,
+'\link[WGCNA]{pickHardThreshold}' or `pickHardThreshold_alternative`. Can be a single character
+string if the same for all layers, else a named list mapping layer names to methods. Layers may
+be omitted if a method is mapped to `default`.}
 
-\item{handling_missing_data}{Specifying the handling of missing data during correlation computation. Use "all.obs" or "pairwise.complete.obs". Argument is passed to \code{\link[WGCNA]{cor}}. Can be a single character string if the same for all layers, else a named list mapping layer names to methods. Layers may be omitted if a method is mapped to `default`.}
+\item{handling_missing_data}{Specifying the handling of missing data during correlation
+computation. Use "all.obs" or "pairwise.complete.obs". Argument is passed to
+\code{\link[WGCNA]{cor}}. Can be a single character string if the same for all layers, else a
+named list mapping layer names to methods. Layers may be omitted if a method is mapped to
+`default`.}
 
-\item{p_value_adjust_method}{String of the correction method applied to p-values. Passed to \link[stats]{p.adjust}. ("holm", "hochberg", "hommel", "bonferroni",}
+\item{p_value_adjust_method}{String of the correction method applied to p-values. Passed to
+\link[stats]{p.adjust}. ("holm", "hochberg", "hommel", "bonferroni",}
 
-\item{reduction_alpha}{A number indicating the significance value for correlation p-values during reduction. Not-significant edges are dropped.}
+\item{reduction_alpha}{A number indicating the significance value for correlation p-values
+during reduction. Not-significant edges are dropped.}
 
-\item{r_squared_cutoff}{A number indicating the desired minimum scale free topology fitting index R^2 for reduction using \code{\link[WGCNA]{pickHardThreshold}}.}
+\item{r_squared_cutoff}{A number indicating the desired minimum scale free topology fitting
+index R^2 for reduction using \code{\link[WGCNA]{pickHardThreshold}}.}
 
-\item{cut_vector}{A vector of hard threshold cuts for which the scale free topology fit indices are to be calculated during reduction with \code{\link[WGCNA]{pickHardThreshold}}.}
+\item{cut_vector}{A vector of hard threshold cuts for which the scale free topology fit indices
+are to be calculated during reduction with \code{\link[WGCNA]{pickHardThreshold}}.}
 
-\item{n_threads}{Number of threads for parallel computation of p-values during p-value reduction.}
+\item{n_threads}{Number of threads for parallel computation of p-values during p-value
+reduction.}
 
-\item{parallel_chunk_size}{Number of p-values in smallest work unit when computing in parallel during network reduction with method `p_value`.}
+\item{parallel_chunk_size}{Number of p-values in smallest work unit when computing in parallel
+during network reduction with method `p_value`.}
 
-\item{saving_path}{Path to save outputs of `molnet` functions. Default is a temporary directory.}
+\item{saving_path}{Path to save outputs of `molnet` functions. Default is a temporary
+directory.}
 
-\item{save_individual_graphs}{Boolean specifying if individual graphs should be saved during \code{\link{start_pipeline}}}
+\item{save_individual_graphs}{Boolean specifying if individual graphs should be saved during
+\code{\link{start_pipeline}}}
 
-\item{save_combined_graphs}{Boolean specifying if combined graphs should be saved during \code{\link{start_pipeline}}}
+\item{save_combined_graphs}{Boolean specifying if combined graphs should be saved during
+\code{\link{start_pipeline}}}
 
-\item{save_drug_targets}{Boolean specifying if drug targets should be saved during \code{\link{start_pipeline}}}
+\item{save_drug_targets}{Boolean specifying if drug targets should be saved during
+\code{\link{start_pipeline}}}
 
-\item{save_correlation_filename}{File name for saving correlation adjacency matrices in \code{\link{generate_individual_graphs}}.}
+\item{save_correlation_filename}{File name for saving correlation adjacency matrices
+in \code{\link{generate_individual_graphs}}.}
 
 \item{python_executable}{Path to Python executable used for computing simple paths.}
 
 \item{max_path_length}{Integer of maximum length of simple paths to include in computation.}
 
-\item{int_score_mode}{One of `auto`, `sequential` or `ray`. Whether to compute interaction score in parallel using the Ray python library or sequentially. When `auto` it depends on the graph sizes.}
+\item{int_score_mode}{One of `auto`, `sequential` or `ray`. Whether to compute interaction
+score in parallel using the Ray python library or sequentially. When `auto` it depends on the
+graph sizes.}
 
 \item{...}{Supply additional settings.}
 }
@@ -69,7 +91,9 @@ molnet_settings(
 Named list of settings
 }
 \description{
-Function that allows creating a global `settings` variable used in the \link[molnet]{start_pipeline} function. Default parameters can be changed within the function call.
+Function that allows creating a global `settings` variable used in the
+\link[molnet]{start_pipeline} function. Default parameters can be changed within the function
+call.
 }
 \examples{
 settings <- molnet::molnet_settings(correlation_method = "spearman", max_path_length = 3,

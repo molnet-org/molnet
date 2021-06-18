@@ -15,15 +15,23 @@ make_layer(
 \arguments{
 \item{name}{Character string. Names the layer.}
 
-\item{data_group1, data_group2}{Data frame containing raw molecular data of each group (each stratum). Analyzed components (e.g., genes) in columns, samples (e.g. patients) in rows.}
+\item{data_group1, data_group2}{Data frame containing raw molecular data of each group
+(each stratum). Analyzed components (e.g., genes) in columns, samples (e.g. patients) in rows.}
 
-\item{identifier_group1, identifier_group2}{Data frame containing component identifiers (columns) of each component (rows) in the same order as the molecular data frame of each group. These identifiers are used to (a) interconnect graphs and (b) match drugs to drug targets. Must contain a column `type` which identifies the nature of the component (e.g., "protein")}
+\item{identifier_group1, identifier_group2}{Data frame containing component identifiers
+(columns) of each component (rows) in the same order as the molecular data frame of each group.
+ These identifiers are used to (a) interconnect graphs and (b) match drugs to drug targets.
+ Must contain a column `type` which identifies the nature of the component (e.g., "protein")}
 }
 \value{
-Named list containing the supplied data for each group (i.e., the dataset for one layer), that can be supplied to \code{\link{start_pipeline}} and `name` giving the name of the layer. Each sublist contains the `data` and the `identifiers`.
+Named list containing the supplied data for each group (i.e., the dataset for one
+layer), that can be supplied to \code{\link{start_pipeline}} and `name` giving the name of the
+layer. Each sublist contains the `data` and the `identifiers`.
 }
 \description{
-Helper function to transform input data to required pipeline input format. Additionally, the supplied input is checked. Allows easy conversion of raw data into the structure accepted by \code{\link{start_pipeline}}.
+Helper function to transform input data to required pipeline input format. Additionally, the
+supplied input is checked. Allows easy conversion of raw data into the structure accepted by
+\code{\link{start_pipeline}}.
 }
 \examples{
 data(mrna_data)

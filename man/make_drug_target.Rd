@@ -7,19 +7,30 @@
 make_drug_target(target_molecules, interaction_table, match_on)
 }
 \arguments{
-\item{target_molecules}{Name of layer containing the drug targets. This name has to match the corresponding named item in the list of layers supplied to \code{\link{start_pipeline}}.}
+\item{target_molecules}{Name of layer containing the drug targets. This name has to match the
+corresponding named item in the list of layers supplied to \code{\link{start_pipeline}}.}
 
-\item{interaction_table}{Data frame. Has to contain two columns. Additional columns will be ignored in the pipeline.
+\item{interaction_table}{Data frame. Has to contain two columns. Additional columns will be
+ignored in the pipeline.
 * A column called `drug_name` containing names or identifiers of drugs
-* A column with a name that matches an identifier in the layer supplied in `target_molecules`. For example, if drugs target proteins and an identifier called `ncbi_id` was supplied in layer building of the protein layer (\code{\link{make_layer}}), this column should be called `ncbi_id` and contain the corresponding IDs of protein-drug targets. Any other ID present in the constructed layer can be used.}
+* A column with a name that matches an identifier in the layer supplied in `target_molecules`.
+For example, if drugs target proteins and an identifier called `ncbi_id` was supplied in layer
+building of the protein layer (\code{\link{make_layer}}), this column should be called
+`ncbi_id` and contain the corresponding IDs of protein-drug targets. Any other ID present in
+the constructed layer can be used.}
 
-\item{match_on}{Column name of the data frame supplied in `interaction_table` that is used for matching drugs and target nodes in the graph (e.g. `ncbi_id`).}
+\item{match_on}{Column name of the data frame supplied in `interaction_table` that is used for
+matching drugs and target nodes in the graph (e.g. `ncbi_id`).}
 }
 \value{
 Named list of the input parameters in input format of \code{\link{start_pipeline}}.
 }
 \description{
-Function to transform input data to required input format for \code{\link{start_pipeline}}. Here the data needed to define drug-target interactions is formatted. When the reformatted output is passed to \code{\link{start_pipeline}} as \code{drug_target_interaction} argument, the differential drug response score will be calculated for all the supplied drugs in \code{interaction_table}.
+Function to transform input data to required input format for
+\code{\link{start_pipeline}}. Here the data needed to define drug-target interactions is
+formatted. When the reformatted output is passed to \code{\link{start_pipeline}} as
+\code{drug_target_interaction} argument, the differential drug response score will be
+calculated for all the supplied drugs in \code{interaction_table}.
 }
 \examples{
 data(drug_gene_interactions)

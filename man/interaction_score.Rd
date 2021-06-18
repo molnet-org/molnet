@@ -7,20 +7,25 @@
 interaction_score(graphs, drug_target_edgelists, settings)
 }
 \arguments{
-\item{graphs}{A named list (elements `group1` and `group2`). Each element contains the combined graph for its group.}
+\item{graphs}{A named list (elements `group1` and `group2`). Each element contains the combined
+graph for its group.}
 
-\item{drug_target_edgelists}{A named list (elements `group1` and `group2`). Each element contains the list of edges adjacent to drug targets as a data frame (columns `from`, `to` and `weight`)}
+\item{drug_target_edgelists}{A named list (elements `group1` and `group2`). Each element
+contains the list of edges adjacent to drug targets as a data frame (columns `from`, `to` and
+`weight`)}
 
 \item{settings}{A named list containing pipeline settings}
 }
 \value{
-A named list (elements `group1` and `group2`). Each element contains an iGraph object containing the interaction score as weight.
+A named list (elements `group1` and `group2`). Each element contains an iGraph object
+ containing the interaction score as weight.
 }
 \description{
 Writes the input data (combined graphs for both groups in gml format and
 lists of edges adjacent to drug targets for both groups) to files and calls
 a python script for calculating the score.
-Output files written by the python script are two graphs in gml format containing the interaction score as weight.
+Output files written by the python script are two graphs in gml format containing the
+interaction score as weight.
 These are loaded and returned in a named list.
 ATTENTION: Data exchange via files is mandatory and takes a long for large data. Interaction
 score computation is expensive and slow because it involves finding all
@@ -31,9 +36,10 @@ Computation is initiated by \code{\link{calculate_interaction_score}}. The
 python script is parallelized using Ray. Use the setting `int_score_mode` to
 force sequential or parallel computation. Refer to the Ray documentation
 if you encounter problems with running the python script in parallel.
-DISCLAIMER: Depending on the operating system Python comes pre-installed or has to be installed manually.
-Please pay attention to the version and the executable used (python/python3 or homebrew python). You
-can use the `python_executable` setting to specify the command or path.
+DISCLAIMER: Depending on the operating system Python comes pre-installed or has to be installed
+ manually.
+Please pay attention to the version and the executable used (python/python3 or homebrew
+python). You can use the `python_executable` setting to specify the command or path.
 }
 \examples{
 data(combined_graphs_example)

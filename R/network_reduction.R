@@ -27,7 +27,8 @@ chunk_2gether <- function(x, y, n) (
   #'
   #' @export
   #'
-  #' @return A list of lists. Each second level list contains a list of chunks of length n of each input vector.
+  #' @return A list of lists. Each second level list contains a list of chunks of length n of each
+  #' input vector.
   #' @source modified from: https://stackoverflow.com/questions/3318333/split-a-vector-into-chunks
   mapply(function(a, b) (list(x[a:b], y[a:b])),
          seq.int(from = 1, to = length(x), by = n),
@@ -81,19 +82,27 @@ network_reduction_by_p_value <- function(adjacency_matrix,
 
   #' Reduce the the entries in an adjacency matrix by thresholding on p-values
   #'
-  #' (INTERNAL) This function reduces an adjacency matrix of correlations. If computations are done non-parallel \code{\link[WGCNA]{corPvalueStudent}} is used. If computations are done in parallel, our own parallel implementation (\code{\link{corPvalueStudentParallel}}) of this function is used.
+  #' (INTERNAL) This function reduces an adjacency matrix of correlations. If computations are done
+  #' non-parallel \code{\link[WGCNA]{corPvalueStudent}} is used. If computations are done in
+  #' parallel, our own parallel implementation (\code{\link{corPvalueStudentParallel}}) of this
+  #' function is used.
   #' function to calculate Student asymptotic p-values taking the number of samples into account.
-  #' P-values are adjusted using \link[stats]{p.adjust} function. The upper triangle without diagonal entries
-  #' of the adjacency matrix is passed for faster computation. P-values can be adjusted using one of several methods.
-  #' A significance threshold `alpha` can be set. All value entries below this threshold within the initial adjacency matrix
-  #' will be set to NA. If a default cluster is registered with the `parallel` package the computation will happen in
+  #' P-values are adjusted using \link[stats]{p.adjust} function. The upper triangle without
+  #' diagonal entries
+  #' of the adjacency matrix is passed for faster computation. P-values can be adjusted using one
+  #' of several methods.
+  #' A significance threshold `alpha` can be set. All value entries below this threshold within the
+  #' initial adjacency matrix
+  #' will be set to NA. If a default cluster is registered with the `parallel` package the
+  #' computation will happen in
   #' parallel automatically.
   #'
   #'
   #' @param adjacency_matrix An adjacency matrix of correlation values.
   #' @param number_of_samples The number of samples used to calculate the correlation matrix.
   #' @param reduction_alpha A number indicating the alpha value applied for thresholding
-  #' @param p_value_adjustment_method A string of the correction method applied to p-values. Passed to stats::p.adjust().
+  #' @param p_value_adjustment_method A string of the correction method applied to p-values. Passed
+  #' to stats::p.adjust().
   #' @param parallel_chunk_size Number of p-values in smallest work unit when computing in parallel.
   #'
   #' @export
@@ -153,24 +162,34 @@ network_reduction_by_pickHardThreshold <- function(adjacency_matrix,
                                                    method = "pickHardThreshold") {
   #' Reduces network based on WGCNA::pickHardThreshold function
   #'
-  #' (INTERNAL) This function uses \code{\link[WGCNA]{pickHardThreshold.fromSimilarity}} or an alternative implementation \code{\link{pickHardThreshold_alternative}} contained in this package
-  #' to analyze scale free topology for multiple hard thresholds. Within the first iteration a `coarse` cutoff
-  #' is estimated. If no cutoff is found the function terminates with an error message. The second iteration
-  #' determines a `fine-grained` cutoff based on the first iterations cut estimate (+/- 0.25) in sequence steps of 0.01.
+  #' (INTERNAL) This function uses \code{\link[WGCNA]{pickHardThreshold.fromSimilarity}} or an
+  #' alternative implementation \code{\link{pickHardThreshold_alternative}} contained in this
+  #' package to analyze scale free topology for multiple hard thresholds. Within the first iteration
+  #'  a `coarse` cutoff is estimated. If no cutoff is found the function terminates with an error
+  #'  message. The second iteration determines a `fine-grained` cutoff based on the first iterations
+  #' cut estimate (+/- 0.25) in sequence steps of 0.01.
   #' All values below the cutoff will be set to NA and the reduced adjacency is returned.
   #'
   #' @param adjacency_matrix Adjacency matrix of correlation values.
-  #' @param RsquaredCut A number indicating the desired minimum scale free topology fitting index R^2.
-  #' @param cutVector A vector of hard threshold cuts for which the scale free topology fit indices are to be calculated.
-  #' @param method String. Determines whether the original implementation of \code{\link[WGCNA]{pickHardThreshold.fromSimilarity}} is used ("pickHardThreshold") or the alternative implementation contained in this package \code{\link{pickHardThreshold_alternative}} ("pickHardThreshold_alternative").
+  #' @param RsquaredCut A number indicating the desired minimum scale free topology fitting
+  #' index R^2.
+  #' @param cutVector A vector of hard threshold cuts for which the scale free topology fit indices
+  #' are to be calculated.
+  #' @param method String. Determines whether the original implementation of
+  #' \code{\link[WGCNA]{pickHardThreshold.fromSimilarity}} is used ("pickHardThreshold") or the
+  #' alternative implementation contained in this package
+  #' \code{\link{pickHardThreshold_alternative}} ("pickHardThreshold_alternative").
   #' @export
-  #' @source The original implementation of pickHardThreshold is used from \code{\link[WGCNA]{pickHardThreshold.fromSimilarity}}
+  #' @source The original implementation of pickHardThreshold is used from
+  #' \code{\link[WGCNA]{pickHardThreshold.fromSimilarity}}
   #' @examples
   #' data(mrna_data)
-  #' adj_mat <- WGCNA::cor(mrna_data$group1$data[,1:500])
-  #' reduced_by_PHT <- network_reduction_by_pickHardThreshold(adj_mat, RsquaredCut = 0.1, cutVector = seq(0.2, 0.8, by = 0.05))
+  #' adj_mat <- WGCNA::cor(mrna_data$group1$data)
+  #' reduced_by_PHT <- network_reduction_by_pickHardThreshold(adj_mat,
+  #' RsquaredCut = 0.1, cutVector = seq(0.2, 0.8, by = 0.05))
   #'
-  #' @return A reduced adjacency matrix of correlations with NA's inserted at positions below estimated cutoff.
+  #' @return A reduced adjacency matrix of correlations with NA's inserted at positions below
+  #' estimated cutoff.
   #'
 
   if (method == "pickHardThreshold") {

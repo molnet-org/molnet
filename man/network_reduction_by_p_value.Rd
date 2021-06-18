@@ -22,7 +22,8 @@ network_reduction_by_p_value(
 
 \item{reduction_alpha}{A number indicating the alpha value applied for thresholding}
 
-\item{p_value_adjustment_method}{A string of the correction method applied to p-values. Passed to stats::p.adjust().}
+\item{p_value_adjustment_method}{A string of the correction method applied to p-values. Passed
+to stats::p.adjust().}
 
 \item{parallel_chunk_size}{Number of p-values in smallest work unit when computing in parallel.}
 }
@@ -30,12 +31,19 @@ network_reduction_by_p_value(
 A reduced adjacency matrix with NA's at martix entries with p-values below threshold.
 }
 \description{
-(INTERNAL) This function reduces an adjacency matrix of correlations. If computations are done non-parallel \code{\link[WGCNA]{corPvalueStudent}} is used. If computations are done in parallel, our own parallel implementation (\code{\link{corPvalueStudentParallel}}) of this function is used.
+(INTERNAL) This function reduces an adjacency matrix of correlations. If computations are done
+non-parallel \code{\link[WGCNA]{corPvalueStudent}} is used. If computations are done in
+parallel, our own parallel implementation (\code{\link{corPvalueStudentParallel}}) of this
+function is used.
 function to calculate Student asymptotic p-values taking the number of samples into account.
-P-values are adjusted using \link[stats]{p.adjust} function. The upper triangle without diagonal entries
-of the adjacency matrix is passed for faster computation. P-values can be adjusted using one of several methods.
-A significance threshold `alpha` can be set. All value entries below this threshold within the initial adjacency matrix
-will be set to NA. If a default cluster is registered with the `parallel` package the computation will happen in
+P-values are adjusted using \link[stats]{p.adjust} function. The upper triangle without
+diagonal entries
+of the adjacency matrix is passed for faster computation. P-values can be adjusted using one
+of several methods.
+A significance threshold `alpha` can be set. All value entries below this threshold within the
+initial adjacency matrix
+will be set to NA. If a default cluster is registered with the `parallel` package the
+computation will happen in
 parallel automatically.
 }
 \examples{

@@ -7,16 +7,20 @@
 check_drug_target(drug_target_interaction)
 }
 \arguments{
-\item{drug_target_interaction}{A named list of the drug interaction data. Created by \code{\link{make_drug_target}}}
+\item{drug_target_interaction}{A named list of the drug interaction data. Created by
+\code{\link{make_drug_target}}}
 }
 \value{
 Character string vector containing error messages.
 }
 \description{
-(INTERNAL) Checks if the data used to define interaction between drugs and targets is valid and formatted correctly.
+(INTERNAL) Checks if the data used to define interaction between drugs and
+targets is valid and formatted correctly.
 }
 \examples{
 data(drug_gene_interactions)
-drug_target_interaction <- make_drug_target(target_molecules='protein', interaction_table=drug_gene_interactions, match_on='gene_name')
+drug_target_interaction <- make_drug_target(target_molecules='protein',
+interaction_table=drug_gene_interactions,
+match_on='gene_name')
 return_errors(check_drug_target(drug_target_interaction))
 }

@@ -12,7 +12,8 @@ A named list with 2 items.
 }
 }
 \source{
-Krug, Karsten et al. “Proteogenomic Landscape of Breast Cancer Tumorigenesis and Targeted Therapy.” Cell vol. 183,5 (2020): 1436-1456.e31. doi:10.1016/j.cell.2020.10.036
+Krug, Karsten et al. “Proteogenomic Landscape of Breast Cancer Tumorigenesis and Targeted
+Therapy.” Cell vol. 183,5 (2020): 1436-1456.e31. doi:10.1016/j.cell.2020.10.036
 }
 \usage{
 interaction_score_graphs_vignette

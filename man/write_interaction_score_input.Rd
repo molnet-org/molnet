@@ -11,13 +11,16 @@ write_interaction_score_input(
 )
 }
 \arguments{
-\item{combined_graphs}{A named list (elements `group1` and `group2`). Each element contains the entire combined network (layers + inter-layer connections) as iGraph graph object.}
+\item{combined_graphs}{A named list (elements `group1` and `group2`). Each element contains the
+entire combined network (layers + inter-layer connections) as iGraph graph object.}
 
-\item{drug_target_edgelists}{A named list (elements `group1` and `group2`). Each element contains the list of edges to be considered in the interaction score calculation as data frame (columns `from`, `to` and `weight`)}
+\item{drug_target_edgelists}{A named list (elements `group1` and `group2`). Each element
+contains the list of edges to be considered in the interaction score calculation as data frame (columns `from`, `to` and `weight`)}
 
 \item{saving_path}{Directory to write to}
 }
 \description{
-(INTERNAL) Writes the combined graphs and the drug target edge lists to files for passing them to the python interaction score script.
+(INTERNAL) Writes the combined graphs and the drug target edge lists to files for
+passing them to the python interaction score script.
 Graphs are saved as `gml` file. Edgelists are saved as `tsv` file.
 }

@@ -42,7 +42,8 @@ graph_metrics <- function(graph, verbose = TRUE, return = FALSE) {
 set_cluster <- function(n_threads) {
   #' @title Create and register cluster
   #'
-  #' @description (INTERNAL) Helper function to create and register a cluster for parallel computation
+  #' @description (INTERNAL) Helper function to create and register a cluster for parallel
+  #' computation
   #' of p-value reduction
   #'
   #' @param n_threads number of nodes in the cluster

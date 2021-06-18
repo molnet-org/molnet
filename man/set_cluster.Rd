@@ -10,6 +10,7 @@ set_cluster(n_threads)
 \item{n_threads}{number of nodes in the cluster}
 }
 \description{
-(INTERNAL) Helper function to create and register a cluster for parallel computation
+(INTERNAL) Helper function to create and register a cluster for parallel
+computation
 of p-value reduction
 }

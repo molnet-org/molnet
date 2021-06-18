@@ -3,26 +3,38 @@ pickHardThreshold_alternative <- function (data,
                                            cutVector = seq(0.1, 0.9, by = 0.05)) {
 #' @title Alternative implementation of WGCNA::pickHardThreshold
 #'
-#' @description (INTERNAL) Alternative implementation of \code{\link[WGCNA]{pickHardThreshold}} to fit to the needs of this package. Most importantly the function was simplified to only apply to the use case of finding a cut-off value to reduce a correlation matrix. The following changes were applied in comparison to the original function:
+#' @description (INTERNAL) Alternative implementation of \code{\link[WGCNA]{pickHardThreshold}} to
+#' fit to the needs of this package. Most importantly the function was simplified to only apply to
+#' the use case of finding a cut-off value to reduce a correlation matrix. The following changes
+#' were applied in comparison to the original function:
 #' * The function __always__ assumes similarity matrices (i.e. correlation matrices) as input
-#' * Additional settings have been removed (`dataIsExpr`, `moreNetworkConcepts`, `removeFirst`, `corFnc`, `corOptions`, `nBreaks`)
+#' * Additional settings have been removed (`dataIsExpr`, `moreNetworkConcepts`, `removeFirst`,
+#' `corFnc`, `corOptions`, `nBreaks`)
 #' * The function uses \code{\link{scaleFreeFitIndex_alternative}} for fit index calculation
 #' * Print prompts and additional metrics were removed
-#' * An error message that reports the lowest R-squared computed in case this value did not satisfy the \code{RsquaredCut} value was added.
+#' * An error message that reports the lowest R-squared computed in case this value did not satisfy
+#' the \code{RsquaredCut} value was added.
 #'
-#' Description by \code{\link[WGCNA]{pickHardThreshold}}:Analysis of scale free topology for multiple hard thresholds. The aim is to help the user pick an appropriate threshold for network construction.
+#' Description by \code{\link[WGCNA]{pickHardThreshold}}:Analysis of scale free topology for
+#' multiple hard thresholds. The aim is to help the user pick an appropriate threshold for network
+#' construction.
 #'
-#' @param data Similarity (correlation) matrix. With entries between 0 and 1 (i.e. absolute values of correlation matrix)
+#' @param data Similarity (correlation) matrix. With entries between 0 and 1 (i.e. absolute values
+#' of correlation matrix)
 #' @param RsquaredCut desired minimum scale free topology fitting index
-#' @param cutVector a vector of hard threshold cuts for which the scale free topology fit indices are to be calculated.
+#' @param cutVector a vector of hard threshold cuts for which the scale free topology fit indices
+#' are to be calculated.
 #' @export
-#' @return estimate of an appropriate hard-thresholding cut: the lowest cut for which the scale free topology fit exceeds \code{RsquaredCut}. If is below \code{RsquaredCut} for all cuts, an error is thrown.
+#' @return estimate of an appropriate hard-thresholding cut: the lowest cut for which the scale
+#' free topology fit exceeds \code{RsquaredCut}. If is below \code{RsquaredCut} for all cuts, an
+#'error is thrown.
 #' @examples
 #' adjacency_matrix <- matrix(rnorm(36),nrow=6)
 #' diag(adjacency_matrix) <- 1
 #' RsquaredCut <- 0.001
 #' cutVector <- seq(0.2, 0.8, by = 0.05)
-#' cutEstimate_coarse <- pickHardThreshold_alternative(abs(adjacency_matrix), RsquaredCut, cutVector)
+#' cutEstimate_coarse <- pickHardThreshold_alternative(abs(adjacency_matrix), RsquaredCut,
+#' cutVector)
 #' @source \code{\link[WGCNA]{pickHardThreshold}} and \code{\link[WGCNA]{scaleFreeFitIndex}}
 #'
     removeFirst <- FALSE
@@ -64,11 +76,17 @@ pickHardThreshold_alternative <- function (data,
 scaleFreeFitIndex_alternative <- function(k, nBreaks = 10, removeFirst = FALSE) {
     #' @title Alternative implementation of WGCNA::scaleFreeFitIndex
     #'
-    #' @description (INTERNAL) This function is a copy of \code{\link[WGCNA]{scaleFreeFitIndex}} with minor changes introduced to fit the needs of this package.
+    #' @description (INTERNAL) This function is a copy of \code{\link[WGCNA]{scaleFreeFitIndex}}
+    #' with minor changes introduced to fit the needs of this package.
     #'
-    #' Description by \code{\link[WGCNA]{scaleFreeFitIndex}}: The function scaleFreeFitIndex calculates several indices (fitting statistics) for evaluating scale free topology fit. The input is a vector (of connectivities) k. Next k is discretized into nBreaks number of equal-width bins. Let's denote the resulting vector dk. The relative frequency for each bin is denoted p.dk.
+    #' Description by \code{\link[WGCNA]{scaleFreeFitIndex}}: The function scaleFreeFitIndex
+    #' calculates several indices (fitting statistics) for evaluating scale free topology fit. The
+    #' input is a vector (of connectivities) k. Next k is discretized into nBreaks number of equal-
+    #' width bins. Let's denote the resulting vector dk. The relative frequency for each bin is
+    #' denoted p.dk.
     #'
-    #' The entire original function code is contained in the function and deleted lines are commented out using \code{#--} to show changes.
+    #' The entire original function code is contained in the function and deleted lines are
+    #' commented out using \code{#--} to show changes.
     #'
     #' @param k numeric vector whose components contain non-negative values
     #' @param nBreaks positive integer. This determines the number of equal width bins.

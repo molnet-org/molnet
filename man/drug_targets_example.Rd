@@ -9,10 +9,15 @@ A named list with 2 items.
 \describe{
   \item{targets}{A named list}
   \describe{
-  \item{target_nodes}{data frame with column `node_id` (unique node IDs in the graph targeted by drugs) and columns `group1` and `group2` (boolean values specifying whether the node is contained in the combined graph of the group)}
-  \item{drugs_to_target_nodes}{Element `drugs_to_target_nodes` contains a named list mapping drug names to a vector of their target node IDs.}
+  \item{target_nodes}{data frame with column `node_id` (unique node IDs in the graph targeted by
+   drugs) and columns `group1` and `group2` (boolean values specifying whether the node is
+   contained in the combined graph of the group)}
+  \item{drugs_to_target_nodes}{Element `drugs_to_target_nodes` contains a named list mapping drug
+   names to a vector of their target node IDs.}
   }
-  \item{edgelist}{Contains elements `group1` and `group2` containing each a data frame of edges adjacent to drug target nodes each. Each edgelist data frame contains columns `from`, `to` and `weight`.}
+  \item{edgelist}{Contains elements `group1` and `group2` containing each a data frame of edges
+  adjacent to drug target nodes each. Each edgelist data frame contains columns `from`, `to` and
+  `weight`.}
 }
 }
 \source{
@@ -22,6 +27,10 @@ The Drug Gene Interaction Database: \url{https://www.dgidb.org/}
 drug_targets_example
 }
 \description{
-Exemplary intermediate pipeline output: Drug targets detected in the combined graphs. A named list with elements `drug_targets` and `edgelist`. This was created from \code{\link{determine_drug_targets}} using the default settings given by \code{\link{molnet_settings}}. Drug-gene interactions to calculate this output were used from The Drug Gene Interaction Database.
+Exemplary intermediate pipeline output: Drug targets detected in the combined graphs. A named
+list with elements `drug_targets` and `edgelist`. This was created from
+\code{\link{determine_drug_targets}} using the default settings given by
+\code{\link{molnet_settings}}. Drug-gene interactions to calculate this output were used from
+The Drug Gene Interaction Database.
 }
 \keyword{datasets}

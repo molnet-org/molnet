@@ -7,21 +7,26 @@
 check_drug_targets_in_layers(drug_target_interaction, layers)
 }
 \arguments{
-\item{drug_target_interaction}{A named list of the drug interaction data. Created by \code{\link{make_drug_target}}}
+\item{drug_target_interaction}{A named list of the drug interaction data. Created by
+\code{\link{make_drug_target}}}
 
-\item{layers}{List of layers to check. Individual layers are created by \code{\link{make_layer}} and need to be wrapped in a list.}
+\item{layers}{List of layers to check. Individual layers are created by
+\code{\link{make_layer}} and need to be wrapped in a list.}
 }
 \value{
 Character string vector containing error messages.
 }
 \description{
-(INTERNAL) Checks if the parameters supplied in 'drug_target_interaction' makes sense in the context of the defined layers.
+(INTERNAL) Checks if the parameters supplied in 'drug_target_interaction' makes
+sense in the context of the defined layers.
 }
 \examples{
 data(layers_example)
 layers <- layers_example
 data(drug_gene_interactions)
-drug_target_interaction <- make_drug_target(target_molecules='protein', interaction_table=drug_gene_interactions, match_on='gene_name')
+drug_target_interaction <- make_drug_target(target_molecules='protein',
+interaction_table=drug_gene_interactions,
+match_on='gene_name')
 return_errors(check_drug_targets_in_layers(drug_target_interaction, layers))
 
 }

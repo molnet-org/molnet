@@ -15,7 +15,8 @@ chunk_2gether(x, y, n)
 \item{n}{length of chunks}
 }
 \value{
-A list of lists. Each second level list contains a list of chunks of length n of each input vector.
+A list of lists. Each second level list contains a list of chunks of length n of each
+input vector.
 }
 \description{
 (INTERNAL)

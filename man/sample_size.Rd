@@ -4,7 +4,8 @@
 \alias{sample_size}
 \title{Sample size for correlation computation}
 \source{
-Method to calculate samples in `pairwise.complete.obs` adopted and improved from \code{\link[WGCNA]{corAndPvalue}}
+Method to calculate samples in `pairwise.complete.obs` adopted and improved from
+\code{\link[WGCNA]{corAndPvalue}}
 }
 \usage{
 sample_size(x, use)
@@ -12,11 +13,18 @@ sample_size(x, use)
 \arguments{
 \item{x}{matrix of measurement data used for correlation computation}
 
-\item{use}{string indicating handling of missing data. Can be 'all.obs' for all observations or 'pairwise.complete.obs' for pairwise observations}
+\item{use}{string indicating handling of missing data. Can be 'all.obs' for all observations
+or 'pairwise.complete.obs' for pairwise observations}
 }
 \value{
-For 'all.obs' returns an integer indicating the number of samples in the supplied matrix (i.e. number of rows). For 'pairwise.complete.obs' returns a matrix in the same size of the correlation matrix indicating the number of samples for each correlation calculation.
+For 'all.obs' returns an integer indicating the number of samples in the supplied
+matrix (i.e. number of rows). For 'pairwise.complete.obs' returns a matrix in the same size
+of the correlation matrix indicating the number of samples for each correlation calculation.
 }
 \description{
-(INTERNAL) Depending on how missing data is handled in correlation matrix computation, the number of samples used is returned. If `all.obs` is used the number of rows (i.e. samples) of the orignal data is returned. If `pairwise.complete.obs` is used the crossproduct of a matrix indicating the non-NA values is returned as matrix. This implementation was adopted from \code{\link[WGCNA]{corAndPvalue}}.
+(INTERNAL) Depending on how missing data is handled in correlation matrix computation, the
+number of samples used is returned. If `all.obs` is used the number of rows (i.e. samples)
+of the orignal data is returned. If `pairwise.complete.obs` is used the crossproduct of a
+matrix indicating the non-NA values is returned as matrix. This implementation was adopted
+from \code{\link[WGCNA]{corAndPvalue}}.
 }

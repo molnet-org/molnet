@@ -7,7 +7,8 @@
 \format{
 A named list with 3 items.
 \describe{
-  \item{target_molecules}{Name of layer containing the drug targets. This name has to match the corresponding named item in the list of layers supplied to \code{\link{start_pipeline}}.}
+  \item{target_molecules}{Name of layer containing the drug targets. This name has to match the
+  corresponding named item in the list of layers supplied to \code{\link{start_pipeline}}.}
   \item{interaction_table}{Table giving drug-gene-interactions.}
   \describe{
   \item{gene_name}{Gene names of targeted protein-coding genes.}
@@ -15,11 +16,14 @@ A named list with 3 items.
   \item{drug_name}{Drug-names with known interactions.}
   \item{drug_chembl_id}{ChEMBL ID of drugs.}
   }
- \item{match_on}{Column name of the data frame supplied in `interaction_table` that is used for matching drugs and target nodes in the graph (e.g. `ncbi_id`).}
+ \item{match_on}{Column name of the data frame supplied in `interaction_table` that is used for
+ matching drugs and target nodes in the graph (e.g. `ncbi_id`).}
 }
 }
 \source{
-Terunuma, Atsushi et al. “MYC-driven accumulation of 2-hydroxyglutarate is associated with breast cancer prognosis.” The Journal of clinical investigation vol. 124,1 (2014): 398-412. doi:10.1172/JCI71180
+Terunuma, Atsushi et al. “MYC-driven accumulation of 2-hydroxyglutarate is associated
+with breast cancer prognosis.”
+The Journal of clinical investigation vol. 124,1 (2014): 398-412. doi:10.1172/JCI71180
 
 \url{https://www.metabolon.com}
 

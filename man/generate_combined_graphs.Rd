@@ -12,16 +12,21 @@ generate_combined_graphs(
 )
 }
 \arguments{
-\item{graphs}{A named list (elements `group1` and `group2`). Each element contains a list of iGraph objects (output of \code{\link{generate_individual_graphs}}).}
+\item{graphs}{A named list (elements `group1` and `group2`). Each element contains a list of
+iGraph objects (output of \code{\link{generate_individual_graphs}}).}
 
-\item{annotations}{A named list (elements `group1` and `group2`). Each element contains a list of data frames mapping each node IDs to identifiers (output of \code{\link{generate_individual_graphs}}).}
+\item{annotations}{A named list (elements `group1` and `group2`). Each element contains a
+list of data frames mapping each node IDs to identifiers (output of \code{\link{generate_individual_graphs}}).}
 
-\item{inter_layer_connections}{Named list with specified inter-layer connections. Names are layer names and elements are connections (\link{make_connection}).}
+\item{inter_layer_connections}{Named list with specified inter-layer connections. Names are
+layer names and elements are connections (\link{make_connection}).}
 
 \item{settings}{A named list containing pipeline settings}
 }
 \value{
-A named list (elements `graphs` and `annotations` and sub-elements `$group1` and `$group2`). Contains the igraph objects of the combined network and their annotations for both groups.
+A named list (elements `graphs` and `annotations` and sub-elements `$group1` and
+`$group2`). Contains the igraph objects of the combined network and their annotations for both
+groups.
 }
 \description{
 Individual graphs created by \code{\link{generate_individual_graphs}}
@@ -32,7 +37,8 @@ along with their annotations.
 \examples{
 data(individual_graphs_example)
 individual_graphs <- individual_graphs_example
-inter_layer_connections <- list(molnet::make_connection(from="mrna", to="protein", connect_on="gene_name", weight=1))
+inter_layer_connections <- list(molnet::make_connection(from="mrna",
+to="protein", connect_on="gene_name", weight=1))
 settings <- molnet::molnet_settings() # defaults
 combined_graphs <- molnet::generate_combined_graphs(individual_graphs$graphs,
                                                     individual_graphs$annotations,

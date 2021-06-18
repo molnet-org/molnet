@@ -648,8 +648,7 @@ get_drug_response_score <- function(differential_graph, drug_targets, interactio
     dplyr::select(.data$drug_name) %>%
     unique()
 
-  # create final output data frame, NAs are added for the drugs which do not have a target in the
-  graph
+  # create final output data frame, NAs are added for the drugs which do not have a target in the graph
   drug_response_score <- data.frame(drug_name = names(drug_response_per_drug),
                                     drug_response_score = unname(unlist(drug_response_per_drug)))  %>%
     dplyr::right_join(all_drug_names) %>%

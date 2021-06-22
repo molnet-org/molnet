@@ -1,13 +1,12 @@
 ---
-title: "Pipeline for Improving Network Integration
-  Algorithms for Cancer Drug Predictions"
+title: "Pipeline for Improving Network Integration Algorithms for Cancer Drug Predictions"
 author: "Julian Hugo, Spoorthi Kashyap, Nataniel Mueller, Justus Zeinert"
 date: "`r Sys.Date()`"
 output: 
   rmarkdown::html_vignette: 
     toc: true 
 vignette: >
-  %\VignetteIndexEntry{Molnet_Vignette}
+  %\VignetteIndexEntry{Pipeline for Improving Network Integration Algorithms for Cancer Drug Predictions}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -332,8 +331,8 @@ head(dplyr::filter(drug_response_score, !is.na(drug_response_score)))
 
 The mRNA, proteomics and phosphoproteomics data used in this vignette stems from Krug et. al, 2020, which contains data from the Clinical Proteomic Tumor Analysis Consortium (CPTAC). Full citation:
 
-* Krug, Karsten et al. “Proteogenomic Landscape of Breast Cancer Tumorigenesis and Targeted Therapy.” Cell vol. 183,5 (2020): 1436-1456.e31. doi:10.1016/j.cell.2020.10.036
+* Krug, Karsten et al. “Proteogenomic Landscape of Breast Cancer Tumorigenesis and Targeted Therapy.” Cell vol. 183,5 (2020): 1436-1456.e31. \doi{doi:10.1016/j.cell.2020.10.036}
 
 Metabolite data was sampled randomly to generate distributions similar to those reported previously (e.g., in Terunuma et al., 2014).
 
-* Terunuma, Atsushi et al. “MYC-driven accumulation of 2-hydroxyglutarate is associated with breast cancer prognosis.” The Journal of clinical investigation vol. 124,1 (2014): 398-412. doi:10.1172/JCI71180
+* Terunuma, Atsushi et al. “MYC-driven accumulation of 2-hydroxyglutarate is associated with breast cancer prognosis.” The Journal of clinical investigation vol. 124,1 (2014): 398-412. \doi{doi:10.1172/JCI71180}

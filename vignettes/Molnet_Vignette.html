@@ -12,7 +12,7 @@
 
 <meta name="author" content="Julian Hugo, Spoorthi Kashyap, Nataniel Mueller, Justus Zeinert" />
 
-<meta name="date" content="2021-06-04" />
+<meta name="date" content="2021-06-22" />
 
 <title>Pipeline for Improving Network Integration Algorithms for Cancer Drug Predictions</title>
 
@@ -336,7 +336,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Pipeline for Improving Network Integration Algorithms for Cancer Drug Predictions</h1>
 <h4 class="author">Julian Hugo, Spoorthi Kashyap, Nataniel Mueller, Justus Zeinert</h4>
-<h4 class="date">2021-06-04</h4>
+<h4 class="date">2021-06-22</h4>
 
 
 <div id="TOC">
@@ -583,23 +583,23 @@ Calculate drug response score
 <p>The head of the results is shown below. The drug response score is an indirect measure of how the strength of connectivity differs between the groups for the drug targets of the particular drug. It indicates which drugs could be interesting in the application of stratified medicine.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">head</span>(dplyr<span class="op">::</span><span class="kw">filter</span>(drug_response_score, <span class="op">!</span><span class="kw">is.na</span>(drug_response_score)))</span>
 <span id="cb18-2"><a href="#cb18-2"></a><span class="co">#&gt;               drug_name drug_response_score</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="co">#&gt; 1                  81C6           0.3681288</span></span>
-<span id="cb18-4"><a href="#cb18-4"></a><span class="co">#&gt; 2               ALCOHOL           0.6167533</span></span>
-<span id="cb18-5"><a href="#cb18-5"></a><span class="co">#&gt; 3               AS-1409           0.3766870</span></span>
-<span id="cb18-6"><a href="#cb18-6"></a><span class="co">#&gt; 4          ATORVASTATIN           0.6167533</span></span>
-<span id="cb18-7"><a href="#cb18-7"></a><span class="co">#&gt; 5 BISMUTH SUBSALICYLATE           0.7271005</span></span>
-<span id="cb18-8"><a href="#cb18-8"></a><span class="co">#&gt; 6                CC-115           0.7268368</span></span></code></pre></div>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="co">#&gt; 1                  81C6           1.0087989</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="co">#&gt; 2               ALCOHOL           0.8798504</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a><span class="co">#&gt; 3               AS-1409           0.6867188</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="co">#&gt; 4          ATORVASTATIN           0.8798504</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="co">#&gt; 5 BISMUTH SUBSALICYLATE           1.0749806</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="co">#&gt; 6                CC-115           1.2460396</span></span></code></pre></div>
 </div>
 </div>
 <div id="references" class="section level2">
 <h2>References</h2>
 <p>The mRNA, proteomics and phosphoproteomics data used in this vignette stems from Krug et. al, 2020, which contains data from the Clinical Proteomic Tumor Analysis Consortium (CPTAC). Full citation:</p>
 <ul>
-<li>Krug, Karsten et al. “Proteogenomic Landscape of Breast Cancer Tumorigenesis and Targeted Therapy.” Cell vol. 183,5 (2020): 1436-1456.e31. <a href="doi:10.1016/j.cell.2020.10.036" class="uri">doi:10.1016/j.cell.2020.10.036</a></li>
+<li>Krug, Karsten et al. “Proteogenomic Landscape of Breast Cancer Tumorigenesis and Targeted Therapy.” Cell vol. 183,5 (2020): 1436-1456.e31. </li>
 </ul>
 <p>Metabolite data was sampled randomly to generate distributions similar to those reported previously (e.g., in Terunuma et al., 2014).</p>
 <ul>
-<li>Terunuma, Atsushi et al. “MYC-driven accumulation of 2-hydroxyglutarate is associated with breast cancer prognosis.” The Journal of clinical investigation vol. 124,1 (2014): 398-412. <a href="doi:10.1172/JCI71180" class="uri">doi:10.1172/JCI71180</a></li>
+<li>Terunuma, Atsushi et al. “MYC-driven accumulation of 2-hydroxyglutarate is associated with breast cancer prognosis.” The Journal of clinical investigation vol. 124,1 (2014): 398-412. </li>
 </ul>
 </div>
 

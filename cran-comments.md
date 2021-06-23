@@ -1,18 +1,19 @@
 ## Test environments
-* R-hub Windows Server 2008 R2 SP1, R-devel, 32/64 bit
-    * Error: Bioconductor does not yet build and check packages for R version 4.2; see https://bioconductor.org/install Execution halted
 * R-hub Windows Server 2008 R2 SP1, R-release, 32/64 bit
     * OK
 * R-hub macOS 10.13.6 High Sierra, R-release, CRAN's setup
     * OK
-
-Due to the Bioconductor error on R-devel, we ran the checks on R-release.
+* R winbuilder R-oldrelease (4.0.5), R-release (4.1.0), R-devel (4.2.0)
+    * 1 note see below
 
 ## R CMD check results
 
 0 errors | 0 warnings | 1 note
 
-* This is a new release.
+* checking CRAN incoming feasibility ... NOTE
+Maintainer: 'Katharina Baum <katharina.baum@hpi.de>'
+
+* New submission
 
 ## Downstream dependencies
 There are currently no downstream dependencies for this package.

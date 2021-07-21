@@ -27,11 +27,11 @@ graph_metrics <- function(graph, verbose = TRUE, return = FALSE) {
   )
 
   if(verbose == TRUE) {
-    cat('Vertex count:', metrics$n_vertices, '\n')
-    cat('Edge count:', metrics$n_edges, '\n')
-    cat('Number of components:', metrics$components$no, '\n')
-    cat('Size of largest component:', metrics$components$csize[1], '\n')
-    cat('Relative frequency of zero degree vertices:', metrics$degree_distribution[1], '\n')
+    message('Vertex count:', metrics$n_vertices, '\n')
+    message('Edge count:', metrics$n_edges, '\n')
+    message('Number of components:', metrics$components$no, '\n')
+    message('Size of largest component:', metrics$components$csize[1], '\n')
+    message('Relative frequency of zero degree vertices:', metrics$degree_distribution[1], '\n')
   }
 
   if(return == TRUE) {

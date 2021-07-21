@@ -128,12 +128,12 @@ network_reduction_by_p_value <- function(adjacency_matrix,
                                          chunk_size = parallel_chunk_size)
   }
 
-  cat("p-value matrix calculated.\n")
+  message("p-value matrix calculated.\n")
 
   adjusted_p <- stats::p.adjust(p_values,
                                 method = p_value_adjustment_method)
 
-  cat("p-values adjusted.\n")
+  message("p-values adjusted.\n")
 
   adjusted_p_matrix <- matrix(0,
                               nrow = dim(adjacency_matrix)[[1]],
@@ -142,11 +142,11 @@ network_reduction_by_p_value <- function(adjacency_matrix,
   adjusted_p_matrix[upper.tri(adjusted_p_matrix)] <- adjusted_p
 
   adjusted_p_matrix[lower.tri(adjusted_p_matrix)] <- base::t(adjusted_p_matrix)[lower.tri(adjusted_p_matrix)]
-  cat("full adjusted p-value matrix complete.\n")
+  message("full adjusted p-value matrix complete.\n")
 
   not_significant <- adjusted_p_matrix > reduction_alpha
 
-  cat("thresholding done.\n")
+  message("thresholding done.\n")
 
   adjacency_matrix[not_significant] <- NA
 
@@ -193,7 +193,7 @@ network_reduction_by_pickHardThreshold <- function(adjacency_matrix,
   #'
 
   if (method == "pickHardThreshold") {
-    cat('Reducing network by WGCNA::pickHardThreshold.\n')
+    message('Reducing network by WGCNA::pickHardThreshold.\n')
     ## "invisible(capture.output())" suppresses printing of a table of cutoff and Rsquared values
 
     ## first "coarse" pickHardThreshold iteration
@@ -220,7 +220,7 @@ network_reduction_by_pickHardThreshold <- function(adjacency_matrix,
     }
   }
   if (method == "pickHardThreshold_alternative") {
-    cat('Reducing network by alternative implementation of WGCNA::pickHardThreshold.\n')
+    message('Reducing network by alternative implementation of WGCNA::pickHardThreshold.\n')
     cutEstimate_coarse <- pickHardThreshold_alternative(abs(adjacency_matrix),
                                                                   RsquaredCut,
                                                                   cutVector)

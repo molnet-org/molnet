@@ -297,8 +297,8 @@ return_errors <- function(errors) {
     #'
 
     if (!is.null(errors)) {
-        cat(stringr::str_interp("\n ----- \n${length(errors)} Error(s) detected:\n ----- \n"))
-        cat(paste(paste0(seq(1, length(errors), 1), ". ", errors), "\n", collapse = "\n"))
+        message(stringr::str_interp("\n ----- \n${length(errors)} Error(s) detected:\n ----- \n"))
+        message(paste(paste0(seq(1, length(errors), 1), ". ", errors), "\n", collapse = "\n"))
         stop("Errors detected! Details are printed above this error message.\n")
     }
 }

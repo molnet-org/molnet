@@ -52,9 +52,9 @@ pickHardThreshold_alternative <- function (data,
     }
 
     datk = t(apply(data, 2, fun1))
-    cat(paste0("Calculating Rsquared for ", length(cutVector)," cut-off values\n"))
+    message("Calculating Rsquared for ", length(cutVector)," cut-off values\n")
     for (i in c(1:length(cutVector))) {
-        cat(paste0("Computing Rsquared for cut-off ",cutVector[i], ". cut-off number ",i,"\n"))
+        message("Computing Rsquared for cut-off ",cutVector[i], ". cut-off number ",i,"\n")
         khelp <-  datk[, i] - 1
         SFT1 <- scaleFreeFitIndex_alternative(k = khelp,
                                   nBreaks = nBreaks,

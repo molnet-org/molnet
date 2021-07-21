@@ -186,53 +186,53 @@ start_pipeline <- function(layers, inter_layer_connections, drug_target_interact
   #'
   #' #start_pipeline(layers_example, inter_layer_connections, drug_target_interaction, settings)
   #'
-  cat("### Pipeline started ###\nValidating input...\n")
+  message("### Pipeline started ###\nValidating input...\n")
   return_errors(check_input(layers, inter_layer_connections, drug_target_interaction))
-  cat("done.\n")
+  message("done.\n")
   if (any(settings$reduction_method_layers == "p_value") &&
       settings$n_threads > 1 &&
       is.null(parallel::getDefaultCluster())) {
     set_cluster(settings$n_threads)
   }
-  cat("### STEP 1: Generating individual graphs ###\n")
+  message("### STEP 1: Generating individual graphs ###\n")
   individual_graphs <- generate_individual_graphs(layers, settings)
   if (settings$save_individual_graphs) {
-    cat("Saving individual graphs...")
+    message("Saving individual graphs...")
     save(individual_graphs, file=paste0(settings$saving_path, "/individual_graphs.rda"))
-    cat("done.\n")
+    message("done.\n")
   }
-  cat("### STEP 2: Combining graphs ###\n")
+  message("### STEP 2: Combining graphs ###\n")
   combined_graphs <- generate_combined_graphs(individual_graphs[["graphs"]],
                                               individual_graphs[["annotations"]],
                                               inter_layer_connections,
                                               settings)
   if (settings$save_combined_graphs) {
-    cat("Saving combined graphs...")
+    message("Saving combined graphs...")
     save(combined_graphs, file=paste0(settings$saving_path, "/combined_graphs.rda"))
-    cat("done.\n")
+    message("done.\n")
   }
-  cat("### STEP 3: Filtering for drug targets ###\n")
+  message("### STEP 3: Filtering for drug targets ###\n")
   drug_targets <- determine_drug_targets(combined_graphs[["graphs"]],
                                          combined_graphs[["annotations"]],
                                          drug_target_interaction,
                                          settings)
   if (settings$save_drug_targets) {
-    cat("Saving drug targets...")
+    message("Saving drug targets...")
     save(drug_targets, file=paste0(settings$saving_path, "/drug_targets.rda"))
-    cat("done.\n")
+    message("done.\n")
   }
-  cat("Drug targets found.\n")
-  cat("### STEP 4: Calculating interaction score ###\n")
+  message("Drug targets found.\n")
+  message("### STEP 4: Calculating interaction score ###\n")
   interaction_score_graphs <- interaction_score(combined_graphs[["graphs"]],
                                                 drug_targets[["edgelist"]],
                                                 settings)
-  cat("### STEP 5: Calculating differential score ###\n")
+  message("### STEP 5: Calculating differential score ###\n")
   differential_score_graph <- differential_score(interaction_score_graphs)
-  cat("### STEP 6: Calculating drug response score ###\n")
+  message("### STEP 6: Calculating drug response score ###\n")
   drug_response_score <- get_drug_response_score(differential_score_graph,
                                                  drug_targets[["targets"]],
                                                  drug_target_interaction$interaction_table)
-  cat("### Pipeline complete. ###\n")
+  message("### Pipeline complete. ###\n")
   if (!is.null(parallel::getDefaultCluster())) {
     shutdown_cluster()
   }
@@ -295,7 +295,7 @@ generate_individual_graphs <- function(layers, settings) {
     reduction_method = get_layer_setting(layer, settings, "reduction_method")
 
     for(group in groups) {
-      cat(paste0("Generating graph of layer ", layer, " for ", group, "\n"))
+      message("Generating graph of layer ", layer, " for ", group, "\n")
 
       if (!is.null(settings$save_correlation_filename)) {
         save_correlation_filename = paste0(settings$saving_path, "/", settings$save_correlation_filename, "_", layer, ".rds")
@@ -364,7 +364,7 @@ generate_combined_graphs <- function(graphs, annotations, inter_layer_connection
   # iterate over specified connections
   for(n_connection in c(1:length(inter_layer_connections))) {
     connection <- inter_layer_connections[[n_connection]]
-    cat(stringr::str_interp("Connecting ${connection$from} and ${connection$to} "))
+    message(stringr::str_interp("Connecting ${connection$from} and ${connection$to} "))
     if (connection$group == "both") {
       groups <- c("group1", "group2")
     } else {
@@ -373,10 +373,10 @@ generate_combined_graphs <- function(graphs, annotations, inter_layer_connection
     # connections can be established by shared IDs ('id') between networks or by a given interaction
     table ('table')
     if(connection$by == 'id') {
-      cat("by id.\n")
+      message("by id.\n")
       # iterate over groups
       for(group in groups) {
-        cat(stringr::str_interp("${group}: "))
+        message(stringr::str_interp("${group}: "))
 
         layer1 <- connection$from
         layer2 <- connection$to
@@ -384,31 +384,31 @@ generate_combined_graphs <- function(graphs, annotations, inter_layer_connection
         weight <- connection$weight
 
         # generate inter-layer graph
-        cat("generating inter-layer edgelist...")
+        message("generating inter-layer edgelist...")
         inter_layer_edgelist <- inter_layer_edgelist_by_id(annotations[[group]][[layer1]],
                                                         annotations[[group]][[layer2]],
                                                         connection = id,
                                                         weight = weight)
-        cat("done.\n")
+        message("done.\n")
         # save inter-layer graph to list of graph objects
         inter_layer_edges[[group]] <- append(inter_layer_edges[[group]], list(inter_layer_edgelist))
       }
     } else if(connection$by == 'table') {
-      cat("by table.\n")
+      message("by table.\n")
       # iterate over groups
       for(group in groups) {
-        cat(stringr::str_interp("${group}: "))
+        message(stringr::str_interp("${group}: "))
 
         layer1 <- connection$from
         layer2 <- connection$to
         interaction_table <- connection$connect_on
         weight_column <- connection$weight
-        cat("generating inter-layer edgelist...")
+        message("generating inter-layer edgelist...")
         inter_layer_edgelist <- inter_layer_edgelist_by_table(annotations[[group]][[layer1]],
                                                            annotations[[group]][[layer2]],
                                                            interaction_table = interaction_table,
                                                            weight_column = weight_column)
-        cat("done.\n")
+        message("done.\n")
         # save inter-layer graph to list of graph objects
         inter_layer_edges[[group]] <- append(inter_layer_edges[[group]], list(inter_layer_edgelist))
       }
@@ -416,16 +416,16 @@ generate_combined_graphs <- function(graphs, annotations, inter_layer_connection
   }
 
   # empty list to store combined graphs for both groups
-  cat("Combining graphs.\n")
+  message("Combining graphs.\n")
   combined_graphs <- list()
   combined_annotations <- list()
 
   # iterate over groups
   for(group in c("group1", "group2")) {
-    cat(stringr::str_interp("${group}: "))
+    message(stringr::str_interp("${group}: "))
     combined_graphs[[group]] = combine_graphs(graphs[[group]], inter_layer_edges[[group]])
     combined_annotations[[group]] <- dplyr::bind_rows(annotations[[group]])
-    cat("done.\n")
+    message("done.\n")
   }
   combined_annotations[['all']] <- dplyr::bind_rows(annotations[['all']])
   return(list(graphs = combined_graphs,
@@ -534,14 +534,14 @@ interaction_score <- function(graphs, drug_target_edgelists, settings) {
   #' #settings=settings)
   #'
   total_edges <- sapply(graphs, igraph::ecount)
-  cat("Writing data...")
+  message("Writing data...")
   write_interaction_score_input(graphs, drug_target_edgelists, settings$saving_path)
   rm(graphs)
   rm(drug_target_edgelists)
   gc()
-  cat("done.\nRunning python script for interaction score computation.\n")
+  message("done.\nRunning python script for interaction score computation.\n")
   calculate_interaction_score(settings$max_path_length, total_edges, settings$saving_path, settings$python_executable, settings$script_path, settings$int_score_mode)
-  cat("Loading data...")
+  message("Loading data...")
   return(load_interaction_score_output(settings$saving_path))
 }
 

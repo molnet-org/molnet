@@ -102,10 +102,10 @@ load_interaction_score_output <- function(loading_path) {
   graphs <- list()
 
   for(group in groups) {
-    cat(paste0(group, "..."))
+    message(group, "...")
     graphs[[group]] <- igraph::read.graph(paste0(loading_path, '/int_score_graph_', group, '.gml'), format = 'gml')
     gc()
-    cat("done. ")
+    message("done. ")
   }
   return(graphs)
 }

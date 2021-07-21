@@ -102,7 +102,7 @@ generate_reduced_graph <- function(measurement_data,
                                  method = correlation_method,
                                  use = handling_missing_data)
 
-  cat("Correlation calculated.\n")
+  message("Correlation calculated.\n")
 
   if(!is.null(save_correlation_filename)){
     saveRDS(adjacency_matrix, file = save_correlation_filename)
@@ -110,12 +110,12 @@ generate_reduced_graph <- function(measurement_data,
 
   # network reduction
   if (reduction_method == 'p_value') {
-    cat("Reducing network by p-values.\n")
+    message("Reducing network by p-values.\n")
 
     # get number of samples
-    cat("Computing sample size.\n")
+    message("Computing sample size.\n")
     number_of_samples <- sample_size(measurement_data, handling_missing_data)
-    cat("Sample size computed. Starting p-value computation.\n")
+    message("Sample size computed. Starting p-value computation.\n")
     reduced_adjacency_matrix <- network_reduction_by_p_value(adjacency_matrix,
                                                              number_of_samples,
                                                              reduction_alpha,
@@ -127,7 +127,7 @@ generate_reduced_graph <- function(measurement_data,
                                                                        cut_vector,
                                                                        method = reduction_method)
   } else {
-    print('No network reduction.')
+    message('No network reduction.')
     reduced_adjacency_matrix <- adjacency_matrix
   }
 

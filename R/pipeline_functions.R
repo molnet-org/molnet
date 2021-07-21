@@ -166,7 +166,8 @@ start_pipeline <- function(layers, inter_layer_connections, drug_target_interact
   #' @param settings A named list containing pipeline settings. The settings list has to be
   #'initialized by \code{\link{molnet_settings}}. Items in the named list can be adjusted as desired.
   #' @return Data frame containing drug name and associated differential drug response score. If no
-  #' target is found for a specific drug, \code{NA} is returned as a score.
+  #' target is found for a specific drug, \code{NA} is returned as a score. If Python is not installed
+  #' or the interaction score computation fails for some other reason, NULL is returned instead.
   #' @export
   #' @examples
   #' \dontshow{
@@ -187,7 +188,10 @@ start_pipeline <- function(layers, inter_layer_connections, drug_target_interact
   #' save_drug_targets = FALSE,
   #' python_executable = "python3")
   #'
-  #' #start_pipeline(layers_example, inter_layer_connections, drug_target_interaction, settings)
+  #' ## running the entire pipeline requires Python
+  #' \donttest{
+  #' start_pipeline(layers_example, inter_layer_connections, drug_target_interaction, settings)
+  #' }
   #'
   message("### Pipeline started ###\nValidating input...\n")
   return_errors(check_input(layers, inter_layer_connections, drug_target_interaction))
@@ -229,6 +233,10 @@ start_pipeline <- function(layers, inter_layer_connections, drug_target_interact
   interaction_score_graphs <- interaction_score(combined_graphs[["graphs"]],
                                                 drug_targets[["edgelist"]],
                                                 settings)
+  if (is.null(interaction_score_graphs)) {
+    message("Interaction core could not be computed. Maybe Python is not installed. Returning from pipeline early.")
+    return(NULL)
+  }
   message("### STEP 5: Calculating differential score ###\n")
   differential_score_graph <- differential_score(interaction_score_graphs)
   message("### STEP 6: Calculating drug response score ###\n")
@@ -538,20 +546,28 @@ interaction_score <- function(graphs, drug_target_edgelists, settings) {
   #' data(combined_graphs_example)
   #' data(drug_targets_example)
   #' settings <- molnet_settings()
-  #' #interaction_score_graphs <- interaction_score(combined_graphs_example[["graphs"]],
-  #' #drug_target_edgelists=drug_targets_example[["edgelist"]],
-  #' #settings=settings)
+  #' ## the next step requires Python
+  #' \donttest{
+  #' interaction_score_graphs <- interaction_score(combined_graphs_example[["graphs"]],
+  #' drug_target_edgelists=drug_targets_example[["edgelist"]],
+  #' settings=settings)
+  #' }
   #'
-  total_edges <- sapply(graphs, igraph::ecount)
-  message("Writing data...")
-  write_interaction_score_input(graphs, drug_target_edgelists, settings$saving_path)
-  rm(graphs)
-  rm(drug_target_edgelists)
-  gc()
-  message("done.\nRunning python script for interaction score computation.\n")
-  calculate_interaction_score(settings$max_path_length, total_edges, settings$saving_path, settings$python_executable, settings$script_path, settings$int_score_mode)
-  message("Loading data...")
-  return(load_interaction_score_output(settings$saving_path))
+  tryCatch({
+    total_edges <- sapply(graphs, igraph::ecount)
+    message("Writing data...")
+    write_interaction_score_input(graphs, drug_target_edgelists, settings$saving_path)
+    rm(graphs)
+    rm(drug_target_edgelists)
+    gc()
+    message("done.\nRunning python script for interaction score computation.\n")
+    calculate_interaction_score(settings$max_path_length, total_edges, settings$saving_path, settings$python_executable, settings$script_path, settings$int_score_mode)
+    message("Loading data...")
+    return(load_interaction_score_output(settings$saving_path))
+  }, error = function(e) {
+    message("Interaction score cannot be computed. Perhaps python executable could not be run.")
+    return(NULL)
+  })
 }
 
 differential_score <- function(interaction_score_graphs, score_name="weight"){

@@ -217,6 +217,9 @@ settings <- molnet_settings(
   save_drug_targets = FALSE,
   python_executable = "python3"
 )
+# disable multi-threading for example run; 
+# not recommended for actual data processing
+WGCNA::disableWGCNAThreads()
 
 ```
 

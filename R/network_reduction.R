@@ -183,6 +183,9 @@ network_reduction_by_pickHardThreshold <- function(adjacency_matrix,
   #' @source The original implementation of pickHardThreshold is used from
   #' \code{\link[WGCNA]{pickHardThreshold.fromSimilarity}}
   #' @examples
+  #' \dontshow{
+  #' WGCNA::disableWGCNAThreads()
+  #' }
   #' data(mrna_data)
   #' adj_mat <- WGCNA::cor(mrna_data$group1$data)
   #' reduced_by_PHT <- network_reduction_by_pickHardThreshold(adj_mat,

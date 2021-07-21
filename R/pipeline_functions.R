@@ -169,6 +169,9 @@ start_pipeline <- function(layers, inter_layer_connections, drug_target_interact
   #' target is found for a specific drug, \code{NA} is returned as a score.
   #' @export
   #' @examples
+  #' \dontshow{
+  #' WGCNA::disableWGCNAThreads()
+  #' }
   #' data(drug_gene_interactions)
   #' data(layers_example)
   #' inter_layer_connections = list(make_connection(from = 'mrna',
@@ -264,6 +267,9 @@ generate_individual_graphs <- function(layers, settings) {
   #' @export
   #'
   #' @examples
+  #' \dontshow{
+  #' WGCNA::disableWGCNAThreads()
+  #' }
   #' data(layers_example)
   #' layers <- layers_example
   #' settings <- molnet::molnet_settings(handling_missing_data="pairwise.complete.obs")
@@ -350,6 +356,9 @@ generate_combined_graphs <- function(graphs, annotations, inter_layer_connection
   #' @export
   #'
   #' @examples
+  #' \dontshow{
+  #' WGCNA::disableWGCNAThreads()
+  #' }
   #' data(individual_graphs_example)
   #' individual_graphs <- individual_graphs_example
   #' inter_layer_connections <- list(molnet::make_connection(from="mrna",

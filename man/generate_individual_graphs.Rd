@@ -29,6 +29,9 @@ identifiers given in the layer and the mapping table is returned as
 `annotations`.
 }
 \examples{
+\dontshow{
+WGCNA::disableWGCNAThreads()
+}
 data(layers_example)
 layers <- layers_example
 settings <- molnet::molnet_settings(handling_missing_data="pairwise.complete.obs")

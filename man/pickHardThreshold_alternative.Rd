@@ -49,6 +49,9 @@ adjacency_matrix <- matrix(rnorm(36),nrow=6)
 diag(adjacency_matrix) <- 1
 RsquaredCut <- 0.001
 cutVector <- seq(0.2, 0.8, by = 0.05)
+\dontshow{
+WGCNA::disableWGCNAThreads()
+}
 cutEstimate_coarse <- pickHardThreshold_alternative(abs(adjacency_matrix), RsquaredCut,
 cutVector)
 }

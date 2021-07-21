@@ -35,6 +35,9 @@ are combined to a single graph per group according to
 along with their annotations.
 }
 \examples{
+\dontshow{
+WGCNA::disableWGCNAThreads()
+}
 data(individual_graphs_example)
 individual_graphs <- individual_graphs_example
 inter_layer_connections <- list(molnet::make_connection(from="mrna",

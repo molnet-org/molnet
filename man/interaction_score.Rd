@@ -45,8 +45,11 @@ python). You can use the `python_executable` setting to specify the command or p
 data(combined_graphs_example)
 data(drug_targets_example)
 settings <- molnet_settings()
-#interaction_score_graphs <- interaction_score(combined_graphs_example[["graphs"]],
-#drug_target_edgelists=drug_targets_example[["edgelist"]],
-#settings=settings)
+## the next step requires Python
+\donttest{
+interaction_score_graphs <- interaction_score(combined_graphs_example[["graphs"]],
+drug_target_edgelists=drug_targets_example[["edgelist"]],
+settings=settings)
+}
 
 }

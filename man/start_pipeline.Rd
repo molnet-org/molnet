@@ -31,7 +31,8 @@ initialized by \code{\link{molnet_settings}}. Items in the named list can be adj
 }
 \value{
 Data frame containing drug name and associated differential drug response score. If no
-target is found for a specific drug, \code{NA} is returned as a score.
+target is found for a specific drug, \code{NA} is returned as a score. If Python is not installed
+or the interaction score computation fails for some other reason, NULL is returned instead.
 }
 \description{
 This wrapper function executes all necessary steps to generate differential drug response
@@ -53,6 +54,9 @@ Eventually a data frame is returned containing the supplied drug name and its as
 differential drug response score computed by molnet.
 }
 \examples{
+\dontshow{
+WGCNA::disableWGCNAThreads()
+}
 data(drug_gene_interactions)
 data(layers_example)
 inter_layer_connections = list(make_connection(from = 'mrna',
@@ -68,6 +72,9 @@ save_combined_graphs = FALSE,
 save_drug_targets = FALSE,
 python_executable = "python3")
 
-#start_pipeline(layers_example, inter_layer_connections, drug_target_interaction, settings)
+## running the entire pipeline requires Python
+\donttest{
+start_pipeline(layers_example, inter_layer_connections, drug_target_interaction, settings)
+}
 
 }

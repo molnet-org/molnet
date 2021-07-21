@@ -43,6 +43,9 @@ cut estimate (+/- 0.25) in sequence steps of 0.01.
 All values below the cutoff will be set to NA and the reduced adjacency is returned.
 }
 \examples{
+\dontshow{
+WGCNA::disableWGCNAThreads()
+}
 data(mrna_data)
 adj_mat <- WGCNA::cor(mrna_data$group1$data)
 reduced_by_PHT <- network_reduction_by_pickHardThreshold(adj_mat,

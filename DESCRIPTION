@@ -1,6 +1,6 @@
 Package: molnet
 Type: Package
-Title: Analysis Pipeline for the Prediction of Differential Drug Response using Multi-Omics Networks
+Title: Predicting Differential Drug Response using Multi-Omics Networks
 Version: 0.1.0
 Authors@R: c(
     person(given = "Katharina",

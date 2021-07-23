@@ -10,6 +10,7 @@ write_interaction_score_input <- function(combined_graphs, drug_target_edgelists
   #' @param drug_target_edgelists A named list (elements `group1` and `group2`). Each element
   #' contains the list of edges to be considered in the interaction score calculation as data frame (columns `from`, `to` and `weight`)
   #' @param saving_path Directory to write to
+  #' @return Does not return value, but writes to .tsv.
   #'
   #' @export
   #'

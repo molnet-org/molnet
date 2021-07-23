@@ -97,7 +97,7 @@ get_layer <- function(name, layers) {
   #'
   #' @param name The layer to fetch
   #' @param layers a layers object \code{\link{layers_example}}
-  #'
+  #' @return Returns the layer along with layer names
   #' @export
   layer_names <- sapply(layers, function(l) l[['name']])
   return(layers[[which(layer_names == name)]])

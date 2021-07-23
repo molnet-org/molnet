@@ -48,7 +48,7 @@ calculate_interaction_score <- function(max_path_length, total_edges, loading_pa
   #' @param int_score_mode One of `auto`, `sequential` or `ray`. Whether to compute interaction
   #' score in parallel using the Ray python library or sequentially. When `auto` it depends on the
   #' graph sizes.
-  #'
+  #' @return Does not return anything, instead calls Python script which outputs .gml files
   #' @export
   #'
   py_script <- ifelse(is.null(script_path), system.file("python_igraph_interaction_score.py", package = "molnet"), script_path)

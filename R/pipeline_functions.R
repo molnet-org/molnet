@@ -188,7 +188,6 @@ start_pipeline <- function(layers, inter_layer_connections, drug_target_interact
   #' save_drug_targets = FALSE,
   #' python_executable = "python3")
   #'
-  #' ## running the entire pipeline requires Python
   #' \donttest{
   #' start_pipeline(layers_example, inter_layer_connections, drug_target_interaction, settings)
   #' }
@@ -546,7 +545,6 @@ interaction_score <- function(graphs, drug_target_edgelists, settings) {
   #' data(combined_graphs_example)
   #' data(drug_targets_example)
   #' settings <- molnet_settings()
-  #' ## the next step requires Python
   #' \donttest{
   #' interaction_score_graphs <- interaction_score(combined_graphs_example[["graphs"]],
   #' drug_target_edgelists=drug_targets_example[["edgelist"]],

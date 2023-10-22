@@ -10,8 +10,7 @@ graph_metrics <- function(graph, verbose = TRUE, return = FALSE) {
   #' @export
   #'
   #' @examples
-  #' adj_mat <- matrix(rnorm(36),nrow=6)
-  #' graph <- igraph::graph_from_adjacency_matrix(adj_mat)
+  #' graph <- igraph::sample_gnm(100,100)
   #' graph_metrics(graph, verbose = TRUE, return = FALSE)
   #'
   #'
